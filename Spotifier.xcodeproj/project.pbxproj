@@ -14,6 +14,7 @@
 		E81017191DFAEEB8002C5EAB /* Spotifier.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E81017171DFAEEB8002C5EAB /* Spotifier.xcdatamodeld */; };
 		E810171B1DFAEEB8002C5EAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E810171A1DFAEEB8002C5EAB /* Assets.xcassets */; };
 		E810171E1DFAEEB8002C5EAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E810171C1DFAEEB8002C5EAB /* LaunchScreen.storyboard */; };
+		E81017271DFAEFC4002C5EAB /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E81017251DFAEFC4002C5EAB /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		E810171A1DFAEEB8002C5EAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E810171D1DFAEEB8002C5EAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E810171F1DFAEEB8002C5EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E81017261DFAEFC4002C5EAB /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FAD6F7C919CEE17CAF7D43F4 /* Pods-Spotifier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotifier.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spotifier/Pods-Spotifier.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +64,7 @@
 		E81017041DFAEEB8002C5EAB = {
 			isa = PBXGroup;
 			children = (
+				E81017251DFAEFC4002C5EAB /* Model.xcdatamodeld */,
 				E810170F1DFAEEB8002C5EAB /* Spotifier */,
 				E810170E1DFAEEB8002C5EAB /* Products */,
 				C7E4EC3ED66E5F9B57956147 /* Pods */,
@@ -217,6 +220,7 @@
 				E81017191DFAEEB8002C5EAB /* Spotifier.xcdatamodeld in Sources */,
 				E81017131DFAEEB8002C5EAB /* ViewController.swift in Sources */,
 				E81017111DFAEEB8002C5EAB /* AppDelegate.swift in Sources */,
+				E81017271DFAEFC4002C5EAB /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +384,7 @@
 				E81017241DFAEEB8002C5EAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -391,6 +396,16 @@
 			);
 			currentVersion = E81017181DFAEEB8002C5EAB /* Spotifier.xcdatamodel */;
 			path = Spotifier.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		E81017251DFAEFC4002C5EAB /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E81017261DFAEFC4002C5EAB /* Model.xcdatamodel */,
+			);
+			currentVersion = E81017261DFAEFC4002C5EAB /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
