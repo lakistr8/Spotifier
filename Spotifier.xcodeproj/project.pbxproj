@@ -11,6 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = E81017291DFAF0AF002C5EAB /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
 			buildPhases = (
+				E810172C1DFAF12E002C5EAB /* ShellScript */,
 			);
 			dependencies = (
 			);
@@ -212,6 +213,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Spotifier/Pods-Spotifier-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E810172C1DFAF12E002C5EAB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd DataModel\n~/Applications/mogenerator  –swift  –base-class ManagedObject  –model ../Spotifier/Spotifier.xcdatamodeld  –template-path ../tmpl  –human-dir mogen-classes  –machine-dir mogen-properties\n\n\n\n\n\n\n";
 		};
 		E875AAD83E446DEB088EA3AE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
