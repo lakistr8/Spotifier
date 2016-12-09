@@ -6,6 +6,19 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		E81017281DFAF0AF002C5EAB /* Mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = E81017291DFAF0AF002C5EAB /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = Mogenerator;
+			productName = Mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		D8A6B2A2E44852B92D82E40C /* Pods_Spotifier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F2E29895AF95ABB42C1348 /* Pods_Spotifier.framework */; };
 		E81017111DFAEEB8002C5EAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81017101DFAEEB8002C5EAB /* AppDelegate.swift */; };
@@ -131,6 +144,10 @@
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
 					};
+					E81017281DFAF0AF002C5EAB = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = E81017081DFAEEB8002C5EAB /* Build configuration list for PBXProject "Spotifier" */;
@@ -147,6 +164,7 @@
 			projectRoot = "";
 			targets = (
 				E810170C1DFAEEB8002C5EAB /* Spotifier */,
+				E81017281DFAF0AF002C5EAB /* Mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -365,6 +383,20 @@
 			};
 			name = Release;
 		};
+		E810172A1DFAF0AF002C5EAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E810172B1DFAF0AF002C5EAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -385,6 +417,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		E81017291DFAF0AF002C5EAB /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E810172A1DFAF0AF002C5EAB /* Debug */,
+				E810172B1DFAF0AF002C5EAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

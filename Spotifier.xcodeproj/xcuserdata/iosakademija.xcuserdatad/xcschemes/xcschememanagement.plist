@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Mogenerator.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Spotifier.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>E810170C1DFAEEB8002C5EAB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E81017281DFAF0AF002C5EAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
