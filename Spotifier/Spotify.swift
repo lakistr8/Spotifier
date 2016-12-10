@@ -59,11 +59,21 @@ extension Spotify {
         case artist(id: String, type: SearchType?)
         case albums(id: String, type: SearchType?)
         
-//        var fullURL : URL {
-//            
-//        }
+        var fullURL : URL {
+            
+            var path = ""
+            
+            switch self {
+            case .search(let q, let type):
+                path = "search"
+            case .artist(let id, let type):
+                path = "artist/\(id)/\(type)"
+            default:
+                break
+            }
+            return baseURL.appendingPathComponent(path)
+        }
     }
-    
 }
 
 
