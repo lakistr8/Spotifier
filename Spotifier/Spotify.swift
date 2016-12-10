@@ -80,11 +80,28 @@ extension Spotify {
             
             return r
         }
-        
-        
     }
 }
 
+extension Spotify {
+    
+    typealias JSON = [String:Any]
+    typealias CallBack = (JSON?, Error?) -> Void
+    
+    
+    func call(path: Path, completion: @escaping CallBack) {
+        
+        let urlRequest = path.urlRequest
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) {
+            
+        }
+        
+        task.resume()
+    }
+    
+    
+}
 
 
 
