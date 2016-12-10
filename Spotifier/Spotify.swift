@@ -73,6 +73,15 @@ extension Spotify {
             }
             return baseURL.appendingPathComponent(path)
         }
+        
+        var urlRequest: URLRequest {
+            
+            var r = URLRequest(url: fullURL)
+            
+            return r
+        }
+        
+        
     }
 }
 
