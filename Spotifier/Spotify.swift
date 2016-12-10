@@ -94,6 +94,28 @@ extension Spotify {
         let urlRequest = path.urlRequest
         
         let task = URLSession.shared.dataTask(with: urlRequest) {
+            data, urlResponse, error in
+            
+            //	process the returned stuff, now
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            guard let httpURLResponse = urlResponse as? HTTPURLResponse else {
+                completion(nil, error)
+                return
+            }
+            
+            if httpURLResponse.statusCode != 200 {
+                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
             
         }
         
