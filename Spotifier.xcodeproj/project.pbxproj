@@ -23,11 +23,12 @@
 /* Begin PBXBuildFile section */
 		D8A6B2A2E44852B92D82E40C /* Pods_Spotifier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F2E29895AF95ABB42C1348 /* Pods_Spotifier.framework */; };
 		E81017111DFAEEB8002C5EAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81017101DFAEEB8002C5EAB /* AppDelegate.swift */; };
-		E81017131DFAEEB8002C5EAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81017121DFAEEB8002C5EAB /* ViewController.swift */; };
 		E81017161DFAEEB8002C5EAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E81017141DFAEEB8002C5EAB /* Main.storyboard */; };
 		E81017191DFAEEB8002C5EAB /* Spotifier.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E81017171DFAEEB8002C5EAB /* Spotifier.xcdatamodeld */; };
 		E810171B1DFAEEB8002C5EAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E810171A1DFAEEB8002C5EAB /* Assets.xcassets */; };
 		E810171E1DFAEEB8002C5EAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E810171C1DFAEEB8002C5EAB /* LaunchScreen.storyboard */; };
+		E8E3FAC71DFC331A001757E4 /* TrackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3FAC61DFC331A001757E4 /* TrackController.swift */; };
+		E8E3FAC91DFC332B001757E4 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3FAC81DFC332B001757E4 /* TrackCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,12 +36,13 @@
 		DC008718BC699378D1368E07 /* Pods-Spotifier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotifier.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spotifier/Pods-Spotifier.release.xcconfig"; sourceTree = "<group>"; };
 		E810170D1DFAEEB8002C5EAB /* Spotifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E81017101DFAEEB8002C5EAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E81017121DFAEEB8002C5EAB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E81017151DFAEEB8002C5EAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E81017181DFAEEB8002C5EAB /* Spotifier.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spotifier.xcdatamodel; sourceTree = "<group>"; };
 		E810171A1DFAEEB8002C5EAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E810171D1DFAEEB8002C5EAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E810171F1DFAEEB8002C5EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8E3FAC61DFC331A001757E4 /* TrackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackController.swift; sourceTree = "<group>"; };
+		E8E3FAC81DFC332B001757E4 /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		FAD6F7C919CEE17CAF7D43F4 /* Pods-Spotifier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotifier.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spotifier/Pods-Spotifier.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,7 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				E81017101DFAEEB8002C5EAB /* AppDelegate.swift */,
-				E81017121DFAEEB8002C5EAB /* ViewController.swift */,
+				E8E3FAC61DFC331A001757E4 /* TrackController.swift */,
+				E8E3FAC81DFC332B001757E4 /* TrackCell.swift */,
 				E81017141DFAEEB8002C5EAB /* Main.storyboard */,
 				E810171A1DFAEEB8002C5EAB /* Assets.xcassets */,
 				E810171C1DFAEEB8002C5EAB /* LaunchScreen.storyboard */,
@@ -247,8 +250,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E81017191DFAEEB8002C5EAB /* Spotifier.xcdatamodeld in Sources */,
-				E81017131DFAEEB8002C5EAB /* ViewController.swift in Sources */,
+				E8E3FAC71DFC331A001757E4 /* TrackController.swift in Sources */,
 				E81017111DFAEEB8002C5EAB /* AppDelegate.swift in Sources */,
+				E8E3FAC91DFC332B001757E4 /* TrackCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,11 +8,31 @@
 
 import UIKit
 import CoreData
+import RTCoreDataStack
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var coreDataStack : RTCoreDataStack?
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        coreDataStack = RTCoreDataStack() {
+            
+            guard let coreDataStack = self.coreDataStack else { return }
+            
+            guard let nc = self.window?.rootViewController as? UINavigationController else { return }
+            guard let trackController = nc.topViewController as? TrackController else { return }
+            
+            trackController.moc = coreDataStack.mainContext
+        }
+        
+        
+        return true
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
