@@ -3,6 +3,13 @@ import CoreData
 
 @objc(Track)
 public class Track: ManagedObject {
+    
+    enum Attributes: String {
+        
+        case name
+        
+    }
+    
 
     // MARK: - Life cycle methods
 
