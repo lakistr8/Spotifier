@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		E81017281DFAF0AF002C5EAB /* Mogenerator */ = {
+		E8E3FABB1DFC2A31001757E4 /* mogen */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = E81017291DFAF0AF002C5EAB /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildConfigurationList = E8E3FABC1DFC2A31001757E4 /* Build configuration list for PBXAggregateTarget "mogen" */;
 			buildPhases = (
-				E810172C1DFAF12E002C5EAB /* ShellScript */,
+				E8E3FABF1DFC2A35001757E4 /* ShellScript */,
 			);
 			dependencies = (
 			);
-			name = Mogenerator;
-			productName = Mogenerator;
+			name = mogen;
+			productName = mogen;
 		};
 /* End PBXAggregateTarget section */
 
@@ -28,7 +28,6 @@
 		E81017191DFAEEB8002C5EAB /* Spotifier.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E81017171DFAEEB8002C5EAB /* Spotifier.xcdatamodeld */; };
 		E810171B1DFAEEB8002C5EAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E810171A1DFAEEB8002C5EAB /* Assets.xcassets */; };
 		E810171E1DFAEEB8002C5EAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E810171C1DFAEEB8002C5EAB /* LaunchScreen.storyboard */; };
-		E81017271DFAEFC4002C5EAB /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E81017251DFAEFC4002C5EAB /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +41,6 @@
 		E810171A1DFAEEB8002C5EAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E810171D1DFAEEB8002C5EAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E810171F1DFAEEB8002C5EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E81017261DFAEFC4002C5EAB /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FAD6F7C919CEE17CAF7D43F4 /* Pods-Spotifier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotifier.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spotifier/Pods-Spotifier.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,7 +76,6 @@
 		E81017041DFAEEB8002C5EAB = {
 			isa = PBXGroup;
 			children = (
-				E81017251DFAEFC4002C5EAB /* Model.xcdatamodeld */,
 				E810170F1DFAEEB8002C5EAB /* Spotifier */,
 				E810170E1DFAEEB8002C5EAB /* Products */,
 				C7E4EC3ED66E5F9B57956147 /* Pods */,
@@ -145,7 +142,7 @@
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
 					};
-					E81017281DFAF0AF002C5EAB = {
+					E8E3FABB1DFC2A31001757E4 = {
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
 					};
@@ -165,7 +162,7 @@
 			projectRoot = "";
 			targets = (
 				E810170C1DFAEEB8002C5EAB /* Spotifier */,
-				E81017281DFAF0AF002C5EAB /* Mogenerator */,
+				E8E3FABB1DFC2A31001757E4 /* mogen */,
 			);
 		};
 /* End PBXProject section */
@@ -214,19 +211,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Spotifier/Pods-Spotifier-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E810172C1DFAF12E002C5EAB /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd DataModel\n~/Applications/mogenerator  –swift  –base-class ManagedObject  –model ../Spotifier/Spotifier.xcdatamodeld  –template-path ../tmpl  –human-dir mogen-classes  –machine-dir mogen-properties\n\n\n\n\n\n\n";
-		};
 		E875AAD83E446DEB088EA3AE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -242,6 +226,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		E8E3FABF1DFC2A35001757E4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd DataModel\n~/Aplications/mogenerator-beta --swift --base-class ManagedObject --model ../Spotifier/Spotifier.xcdatamodeld --template-path ../tmpl --human-dir mogen-classes --machine-dir mogen-properties\n\n\n\n\n\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -252,7 +249,6 @@
 				E81017191DFAEEB8002C5EAB /* Spotifier.xcdatamodeld in Sources */,
 				E81017131DFAEEB8002C5EAB /* ViewController.swift in Sources */,
 				E81017111DFAEEB8002C5EAB /* AppDelegate.swift in Sources */,
-				E81017271DFAEFC4002C5EAB /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,14 +393,14 @@
 			};
 			name = Release;
 		};
-		E810172A1DFAF0AF002C5EAB /* Debug */ = {
+		E8E3FABD1DFC2A31001757E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		E810172B1DFAF0AF002C5EAB /* Release */ = {
+		E8E3FABE1DFC2A31001757E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -432,13 +428,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E81017291DFAF0AF002C5EAB /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+		E8E3FABC1DFC2A31001757E4 /* Build configuration list for PBXAggregateTarget "mogen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E810172A1DFAF0AF002C5EAB /* Debug */,
-				E810172B1DFAF0AF002C5EAB /* Release */,
+				E8E3FABD1DFC2A31001757E4 /* Debug */,
+				E8E3FABE1DFC2A31001757E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -450,16 +447,6 @@
 			);
 			currentVersion = E81017181DFAEEB8002C5EAB /* Spotifier.xcdatamodel */;
 			path = Spotifier.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		E81017251DFAEFC4002C5EAB /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E81017261DFAEFC4002C5EAB /* Model.xcdatamodel */,
-			);
-			currentVersion = E81017261DFAEFC4002C5EAB /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

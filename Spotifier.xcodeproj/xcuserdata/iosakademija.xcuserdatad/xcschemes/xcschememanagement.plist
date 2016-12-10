@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>mogen.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>E81017281DFAF0AF002C5EAB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E8E3FABB1DFC2A31001757E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
