@@ -14,6 +14,13 @@ class TrackController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let path : Spotify.Path = .search(q: "taylor", type: .artist)
+        Spotify.shared.call(path: path) {
+            json, error in
+            
+            
+        }
     }
     
     var moc: NSManagedObjectContext? {
