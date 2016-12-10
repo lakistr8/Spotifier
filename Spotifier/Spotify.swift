@@ -11,6 +11,19 @@ import Foundation
 
 final class Spotify {
     
+    static let baseURL : URL = {
+        
+        guard let url = URL(string: "https://api.spotify.com/v1/") else {
+            fatalError("faild to create a base url!")}
+        return url
+    }()
+    
+}
+
+
+
+
+extension Spotify {
     
     enum SearchType: String {
         
@@ -29,14 +42,12 @@ final class Spotify {
         
         var apiValue: String {
             switch self {
-            case .albums:
-                return "albums"
             case .relatedArtists:
-                return "related artists"
+                return "related-artists"
             case .topTracks:
-                return "top tracks"
-            case .tracks:
-                return "tracks"
+                return "top-tracks"
+            default:
+                return self.rawValue
             }
         }
         
@@ -47,6 +58,17 @@ final class Spotify {
         case search(q: String, type: SearchType)
         case artist(id: String, type: SearchType?)
         case albums(id: String, type: SearchType?)
+        
+//        var fullURL : URL {
+//            
+//        }
     }
     
 }
+
+
+
+
+
+
+
