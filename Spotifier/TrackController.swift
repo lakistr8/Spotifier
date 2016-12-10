@@ -52,21 +52,42 @@ class TrackController: UITableViewController {
 extension TrackController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        
+        guard let _ = moc else { return 1 }
+        
+        guard let sections = frc.section else { return 1 }
+        return sections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 10   
+        guard let _ = moc else { return 0 }
+        
+        guard let sections = frc.sections else { return 0 }
+        return sections[section].numberOfObjects
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TrackCell.self), for: indexPath)
         
-        // Configure the cell...
+        let item = frc.object(at: indexPath)
+        
+        cell.textLabel?.text = item.name
         
         return cell
     }
 }
+
+
+extension TrackController: NSFetchedResultsControllerDelegate {
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.reloadData()
+    }
+    
+}
+
+
+
+
+
