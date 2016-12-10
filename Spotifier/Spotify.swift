@@ -26,6 +26,20 @@ final class Spotify {
         case relatedArtists
         
         case tracks
+        
+        var apiValue: String {
+            switch self {
+            case .albums:
+                return "albums"
+            case .relatedArtists:
+                return "related artists"
+            case .topTracks:
+                return "top tracks"
+            case .tracks:
+                return "tracks"
+            }
+        }
+        
     }
     
     enum Path {
