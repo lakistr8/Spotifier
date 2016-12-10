@@ -29,6 +29,7 @@
 		E810171E1DFAEEB8002C5EAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E810171C1DFAEEB8002C5EAB /* LaunchScreen.storyboard */; };
 		E8E3FAC71DFC331A001757E4 /* TrackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3FAC61DFC331A001757E4 /* TrackController.swift */; };
 		E8E3FAC91DFC332B001757E4 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3FAC81DFC332B001757E4 /* TrackCell.swift */; };
+		E8E3FACC1DFC3C25001757E4 /* DataModel in Resources */ = {isa = PBXBuildFile; fileRef = E8E3FACB1DFC3C25001757E4 /* DataModel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		E810171F1DFAEEB8002C5EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8E3FAC61DFC331A001757E4 /* TrackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackController.swift; sourceTree = "<group>"; };
 		E8E3FAC81DFC332B001757E4 /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
+		E8E3FACB1DFC3C25001757E4 /* DataModel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DataModel; sourceTree = "<group>"; };
 		FAD6F7C919CEE17CAF7D43F4 /* Pods-Spotifier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotifier.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spotifier/Pods-Spotifier.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 		E81017041DFAEEB8002C5EAB = {
 			isa = PBXGroup;
 			children = (
+				E8E3FACB1DFC3C25001757E4 /* DataModel */,
 				E810170F1DFAEEB8002C5EAB /* Spotifier */,
 				E810170E1DFAEEB8002C5EAB /* Products */,
 				C7E4EC3ED66E5F9B57956147 /* Pods */,
@@ -175,6 +178,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8E3FACC1DFC3C25001757E4 /* DataModel in Resources */,
 				E810171E1DFAEEB8002C5EAB /* LaunchScreen.storyboard in Resources */,
 				E810171B1DFAEEB8002C5EAB /* Assets.xcassets in Resources */,
 				E81017161DFAEEB8002C5EAB /* Main.storyboard in Resources */,

@@ -22,12 +22,36 @@ extension Album: ManagedObjectType {
 
 public extension Album {
 
+	public struct Attributes {
+		static let albumId = "albumId"
+		static let csvAvailableMarkets = "csvAvailableMarkets"
+		static let dateReleased = "dateReleased"
+		static let imageLink = "imageLink"
+		static let labelName = "labelName"
+		static let name = "name"
+		static let spotifyURI = "spotifyURI"
+	}
+
 	public struct Relationships {
 		static let artist = "artist"
 		static let tracks = "tracks"
 	}
 
     // MARK: - Properties
+
+    @NSManaged public var albumId: String?
+
+    @NSManaged public var csvAvailableMarkets: String?
+
+    @NSManaged public var dateReleased: Date?
+
+    @NSManaged public var imageLink: String?
+
+    @NSManaged public var labelName: String?
+
+    @NSManaged public var name: String?
+
+    @NSManaged public var spotifyURI: String?
 
     // MARK: - Relationships
 
