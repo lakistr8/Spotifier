@@ -14,19 +14,6 @@ class TrackController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let fetchRequest : NSFetchRequest<Track> = Track.fetchRequest()
-        
-        let predicate = NSPredicate(format: "%K like %@", Track.Attributes.name.rawValue, "house")
-        fetchRequest.predicate = predicate
-        
-        let sort1 = NSSortDescriptor(key: Track.Attributes.name.rawValue, ascending: true)
-        let sort2 = NSSortDescriptor(key: Track.Attributes.name.rawValue, ascending: true)
-        fetchRequest.sortDescriptors = [sort1, sort2]
-        
-        let arr = try? moc?.fetch(fetchRequest)
-        
-        
     }
     
     var moc: NSManagedObjectContext? {
@@ -36,6 +23,26 @@ class TrackController: UITableViewController {
             self.tableView.reloadData()
         }
     }
+    
+    
+    lazy var frc: NSFetchedResultsController<Track> = {
+        let fetchRequest: NSFetchRequest<Track> = Track.fetchRequest()
+        
+        let predicate = NSPredicate(format: "%K like %@", Track.Attributes.name.rawValue, "house")
+        fetchRequest.predicate = predicate
+        
+        let sort0 = NSSortDescriptor(key: "album.name", ascending: true)
+        let sort1 = NSSortDescriptor(key: Track.Attributes.name.rawValue, ascending: true)
+        let sort2 = NSSortDescriptor(key: Track.Attributes.name.rawValue, ascending: true)
+        fetchRequest.sortDescriptors = [sort0, sort1, sort2]
+        
+        let nsfrc = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                               managedObjectContext: self.moc!,
+                                               sectionNameKeyPath: "album.name",
+                                               cacheName: nil)
+        return nsfrc
+    }()
+
     
     
 }
