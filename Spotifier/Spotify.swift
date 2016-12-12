@@ -28,6 +28,10 @@ final class Spotify {
 
 extension Spotify {
     
+    enum Method: String {
+        case GET, POST, PUT, DELETE
+    }
+    
     enum SearchType: String {
         
         case artist
@@ -62,6 +66,10 @@ extension Spotify {
         case artist(id: String, type: SearchType?)
         case albums(id: String, type: SearchType?)
         
+        private var method: Method {
+            return .GET
+        }
+        
         var fullURL : URL {
             
             var path = ""
@@ -80,6 +88,7 @@ extension Spotify {
         var urlRequest: URLRequest {
             
             var r = URLRequest(url: fullURL)
+            r.httpMethod = method.rawValue
             
             return r
         }
