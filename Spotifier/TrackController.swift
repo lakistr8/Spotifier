@@ -31,6 +31,7 @@ class TrackController: UITableViewController {
     lazy var frc: NSFetchedResultsController<Track> = {
         let fetchRequest: NSFetchRequest<Track> = Track.fetchRequest()
         
+//      let predicate = NSPredicate(format: "name like 'house'")
         let predicate = NSPredicate(format: "%K like %@", Track.Attributes.name.rawValue, "house")
         fetchRequest.predicate = predicate
         
