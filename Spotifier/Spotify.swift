@@ -120,6 +120,15 @@ extension Spotify {
                 return
             }
             
+            guard
+                let obj = try? JSONSerialization.jsonObject(with: data),
+                let json = obj as? JSON
+            else {
+                completion(nil, nil)
+                return
+            }
+            completion(json, nil)
+            
         }
         
         task.resume()

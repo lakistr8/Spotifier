@@ -50,7 +50,7 @@
 		E810171F1DFAEEB8002C5EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8E3FAC61DFC331A001757E4 /* TrackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackController.swift; sourceTree = "<group>"; };
 		E8E3FAC81DFC332B001757E4 /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
-		E8E3FACD1DFC4171001757E4 /* Spotify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
+		E8E3FACD1DFC4171001757E4 /* Spotify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spotify.swift; path = Spotifier/Spotify.swift; sourceTree = "<group>"; };
 		E8E3FAD31DFCC52D001757E4 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		E8E3FAD41DFCC52D001757E4 /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		E8E3FAD51DFCC52D001757E4 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
@@ -93,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				E8E3FAD11DFCC52D001757E4 /* DataModel */,
+				E8E3FACD1DFC4171001757E4 /* Spotify.swift */,
 				E810170F1DFAEEB8002C5EAB /* Spotifier */,
 				E810170E1DFAEEB8002C5EAB /* Products */,
 				C7E4EC3ED66E5F9B57956147 /* Pods */,
@@ -118,8 +119,6 @@
 				E810171A1DFAEEB8002C5EAB /* Assets.xcassets */,
 				E810171C1DFAEEB8002C5EAB /* LaunchScreen.storyboard */,
 				E810171F1DFAEEB8002C5EAB /* Info.plist */,
-				E81017171DFAEEB8002C5EAB /* Spotifier.xcdatamodeld */,
-				E8E3FACD1DFC4171001757E4 /* Spotify.swift */,
 			);
 			path = Spotifier;
 			sourceTree = "<group>";
@@ -127,6 +126,7 @@
 		E8E3FAD11DFCC52D001757E4 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				E81017171DFAEEB8002C5EAB /* Spotifier.xcdatamodeld */,
 				E8E3FAD21DFCC52D001757E4 /* mogen-classes */,
 				E8E3FAD61DFCC52D001757E4 /* mogen-properties */,
 			);
@@ -502,7 +502,8 @@
 				E81017181DFAEEB8002C5EAB /* Spotifier.xcdatamodel */,
 			);
 			currentVersion = E81017181DFAEEB8002C5EAB /* Spotifier.xcdatamodel */;
-			path = Spotifier.xcdatamodeld;
+			name = Spotifier.xcdatamodeld;
+			path = ../Spotifier/Spotifier.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
