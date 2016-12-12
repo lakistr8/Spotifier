@@ -40,12 +40,7 @@ final class DataManager {
                 
                 let moc = coreDataStack.importerContext()
                 for item in items {
-                    do {
-                        let t = try Track(json: item, in: moc)
-                    } catch {
-                        //	should delete this object from MOC, since it's invalid
-                        //	but how? it's not accessible in this block
-                    }
+                    let _ = Track(json: item, in: moc)
                 }
                 try! moc.save()
                 
