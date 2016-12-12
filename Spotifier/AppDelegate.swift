@@ -15,7 +15,6 @@ import RTCoreDataStack
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
     var coreDataStack : RTCoreDataStack?
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
@@ -23,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coreDataStack = RTCoreDataStack() {
             
             guard let coreDataStack = self.coreDataStack else { return }
+            
+            DataManager.shared.coreDataStack = coreDataStack
             
             guard let nc = self.window?.rootViewController as? UINavigationController else { return }
             guard let trackController = nc.topViewController as? TrackController else { return }

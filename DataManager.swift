@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-
+import RTCoreDataStack
 
 
 final class DataManager {
@@ -16,7 +16,10 @@ final class DataManager {
     static let shared = DataManager()
     private init() {}
     
+    var coreDataStack : RTCoreDataStack?
+    
     func search(for string: String, type: Spotify.SearchType) {
+        guard let coreDataStack = coreDataStack else { return }
         
         let path : Spotify.Path = .search(q: "taylor", type: .artist)
         Spotify.shared.call(path: path) {
