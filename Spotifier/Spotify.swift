@@ -96,7 +96,7 @@ extension Spotify {
             var path = ""
             
             switch self {
-            case .search(let q, let type):
+            case .search:
                 path = "search"
             case .artist(let id, let type):
                 path = "artist/\(id)/\(type)"
