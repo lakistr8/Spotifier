@@ -21,6 +21,15 @@ final class Spotify {
         return url
     }()
     
+    static let commonHeaders: [String: String] = {
+        return [
+            "User-Agent": "Spotifier/1.0",
+            "Accept": "application/json",
+            "Accept-Charset": "utf-8",
+            "Accept-Encoding": "gzip, deflate"
+        ]
+    }()
+    
 }
 
 
@@ -70,6 +79,17 @@ extension Spotify {
             return .GET
         }
         
+        private var headerFields: [String: String] {
+            var headers = commonHeaders
+            //			switch self {
+            //			case .albums:
+            //				headers["Accept"] = "text/html"
+            //			default:
+            //				break
+            //			}
+            return headers
+        }
+        
         var fullURL : URL {
             
             var path = ""
@@ -89,6 +109,7 @@ extension Spotify {
             
             var r = URLRequest(url: fullURL)
             r.httpMethod = method.rawValue
+            r.allHTTPHeaderFields = headerFields
             
             return r
         }
