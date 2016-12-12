@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guard let coreDataStack = self.coreDataStack else { return }
             
             DataManager.shared.coreDataStack = coreDataStack
+            DataManager.shared.search(for: "taylor swift" , type: .artist)
             
             guard let nc = self.window?.rootViewController as? UINavigationController else { return }
             guard let trackController = nc.topViewController as? TrackController else { return }
