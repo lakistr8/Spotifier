@@ -33,6 +33,12 @@ final class DataManager {
                 guard let trackResult = json["tracks"] as? Spotify.JSON else { return }
                 guard let items = trackResult["items"] as? [Spotify.JSON] else { return }
                 
+                let moc = coreDataStack.importerContext()
+                for item in items {
+                    let t = Track(context: moc)
+                }
+                try! moc.save()
+                
             default:
                 break
             }
