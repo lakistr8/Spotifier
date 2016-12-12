@@ -23,8 +23,16 @@ final class DataManager {
             json, error in
             
             if let _ = error { return }
+            guard let json = json else { return }
             
-            
+            switch type {
+            case .track:
+                guard let trackResult = json["tracks"] as? Spotify.JSON else { return }
+                guard let items = trackResult["items"] as? [Spotify.JSON] else { return }
+                
+            default:
+                break
+            }
             
             //	process JSON or errors
         }
