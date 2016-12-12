@@ -13,6 +13,9 @@ import CoreData
 
 final class DataManager {
     
+    static let shared = DataManager()
+    private init() {}
+    
     func search(for string: String, type: Spotify.SearchType) {
         
         let path : Spotify.Path = .search(q: "taylor", type: .artist)
@@ -25,4 +28,5 @@ final class DataManager {
             
             //	process JSON or errors
         }
+    }
 }
