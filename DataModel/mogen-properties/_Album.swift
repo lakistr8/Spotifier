@@ -39,7 +39,7 @@ public extension Album {
 
     // MARK: - Properties
 
-    @NSManaged public var albumId: String?
+    @NSManaged public var albumId: String!
 
     @NSManaged public var csvAvailableMarkets: String?
 
@@ -49,7 +49,7 @@ public extension Album {
 
     @NSManaged public var labelName: String?
 
-    @NSManaged public var name: String?
+    @NSManaged public var name: String!
 
     @NSManaged public var spotifyURI: String?
 

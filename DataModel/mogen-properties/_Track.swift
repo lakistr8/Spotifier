@@ -50,9 +50,9 @@ public extension Track {
 
     @NSManaged public var imageLink: String?
 
-    @NSManaged public var isExplicit: Bool // Optional scalars not supported
+    @NSManaged public var isExplicit: Bool
 
-    @NSManaged public var name: String?
+    @NSManaged public var name: String!
 
     @NSManaged public var popularity: Int16 // Optional scalars not supported
 
@@ -60,7 +60,7 @@ public extension Track {
 
     @NSManaged public var spotifyURI: String?
 
-    @NSManaged public var trackId: String?
+    @NSManaged public var trackId: String!
 
     // MARK: - Relationships
 

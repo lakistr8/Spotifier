@@ -24,9 +24,9 @@ public extension Artist {
 
 	public struct Attributes {
 		static let artistId = "artistId"
+		static let csvGenres = "csvGenres"
 		static let followersCount = "followersCount"
-		static let genre = "genre"
-		static let imageURL = "imageURL"
+		static let imageLink = "imageLink"
 		static let name = "name"
 		static let popularity = "popularity"
 		static let spotifyURL = "spotifyURL"
@@ -39,15 +39,15 @@ public extension Artist {
 
     // MARK: - Properties
 
-    @NSManaged public var artistId: String?
+    @NSManaged public var artistId: String!
+
+    @NSManaged public var csvGenres: String?
 
     @NSManaged public var followersCount: Int64 // Optional scalars not supported
 
-    @NSManaged public var genre: String?
+    @NSManaged public var imageLink: String?
 
-    @NSManaged public var imageURL: String?
-
-    @NSManaged public var name: String?
+    @NSManaged public var name: String!
 
     @NSManaged public var popularity: Int64 // Optional scalars not supported
 
