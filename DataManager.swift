@@ -65,9 +65,19 @@ final class DataManager {
                 //	IDs for tracks to (maybe) delete:
                 let deleted = existingIDs.subtracting(setIDs)
                 
-                for item in items {
+                //	insert all new Tracks
+                for id in inserted {
+                    //	find JSON for current ID
+                    let filteredItems = items.filter({ item in
+                        guard let jsonID = item["id"] as? String else { return false }
+                        return jsonID == id
+                    })
+                    //	there should be only one item
+                    guard let item = filteredItems.first else { continue }
+                    //	insert that item
                     let _ = Track(json: item, in: moc)
                 }
+                
                 do {
                     try moc.save()
                 } catch(let error) {
