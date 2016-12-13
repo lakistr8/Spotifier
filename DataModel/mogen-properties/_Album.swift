@@ -20,7 +20,7 @@ extension Album: ManagedObjectType {
 
 }
 
-extension Album {
+public extension Album {
 
 	public struct Attributes {
 		static let albumId = "albumId"
