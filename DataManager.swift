@@ -42,7 +42,11 @@ final class DataManager {
                 for item in items {
                     let _ = Track(json: item, in: moc)
                 }
-                try! moc.save()
+                do {
+                    try! moc.save()
+                } catch (let error) {
+                    print("Context Save failed due to: \(error)")
+                }
                 
             default:
                 break
