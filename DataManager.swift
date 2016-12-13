@@ -78,19 +78,26 @@ final class DataManager {
                     let _ = Track(json: item, in: moc)
                 }
                 
-                for id in updated {
-                    //	find JSON for current ID
-                    let filteredItems = items.filter({ item in
-                        guard let jsonID = item["id"] as? String else { return false }
-                        return jsonID == id
-                    })
-                    //	there should be only one item
-                    guard let item = filteredItems.first else { continue }
+                if updated.count > 0 {
+                    let predicate = NSPredicate(format: "%K IN %@",
+                                                Track.Attributes.trackId,
+                                                updated)
+                    let tracks = Track.fetch(withContext: moc, predicate: predicate)
                     
-                    //	update this item...which item?
-                    //	we need to fetch correct Track from Core Data
-                    let _ = Track(json: item, in: moc)
+                    for id in updated {
+                        //	find JSON for current ID
+                        let filteredItems = items.filter({ item in
+                            guard let jsonID = item["id"] as? String else { return false }
+                            return jsonID == id
+                        })
+                        //	there should be only one JSON item to fit
+                        guard let item = filteredItems.first else { continue }
+                        
+                        
+                        let _ = Track(json: item, in: moc)
+                    }
                 }
+                
                 
                 
                 
