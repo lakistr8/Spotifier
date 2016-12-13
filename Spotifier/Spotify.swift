@@ -113,6 +113,7 @@ extension Spotify {
             case .search(let q, let type):
                 p["q"] = q
                 p["type"] = type.rawValue
+                p["limit"] = "50"
             default:
                 break
             }

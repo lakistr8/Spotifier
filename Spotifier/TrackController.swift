@@ -27,22 +27,22 @@ class TrackController: UITableViewController {
         }
     }
     
-    
-    lazy var frc: NSFetchedResultsController<Track> = {
+   	lazy var frc: NSFetchedResultsController<Track> = {
         let fetchRequest: NSFetchRequest<Track> = Track.fetchRequest()
         
-//      let predicate = NSPredicate(format: "name like 'house'")
-        let predicate = NSPredicate(format: "%K contains[cd] %@", Track.Attributes.name.rawValue, "house")
+        //		let predicate = NSPredicate(format: "name like 'house'")
+        let predicate = NSPredicate(format: "%K contains[cd] %@", Track.Attributes.name, "house")
         fetchRequest.predicate = predicate
         
-        let sort0 = NSSortDescriptor(key: "album.name", ascending: true)
-        let sort1 = NSSortDescriptor(key: Track.Attributes.name.rawValue, ascending: true)
-//        let sort2 = NSSortDescriptor(key: Track.Attributes.name.rawValue, ascending: true)
-        fetchRequest.sortDescriptors = [sort0, sort1]
+        //		let sectionNameKeyPath = "\(Track.Relationships.album).\(Album.Attributes.name)"
+        
+        //		let sort0 = NSSortDescriptor(key: sectionNameKeyPath, ascending: true)
+        let sort1 = NSSortDescriptor(key: Track.Attributes.name, ascending: true)
+        fetchRequest.sortDescriptors = [sort1]
         
         let nsfrc = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                managedObjectContext: self.moc!,
-                                               sectionNameKeyPath: "album.name",
+                                               sectionNameKeyPath: nil,
                                                cacheName: nil)
         nsfrc.delegate = self
         do {
@@ -52,9 +52,8 @@ class TrackController: UITableViewController {
         }
         
         return nsfrc
-    }()
+       }()
 
-    
     
 }
 
