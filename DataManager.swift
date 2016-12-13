@@ -12,9 +12,11 @@ import RTCoreDataStack
 
 typealias JSON = [String: Any]
 
+
 enum DataImportError: Error {
     case typeMismatch(expected: Any, actual: Any, key: String)
 }
+
 
 
 final class DataManager {
@@ -22,12 +24,13 @@ final class DataManager {
     static let shared = DataManager()
     private init() {}
     
-    var coreDataStack : RTCoreDataStack?
+    var coreDataStack: RTCoreDataStack?
     
     func search(for string: String, type: Spotify.SearchType) {
         guard let coreDataStack = coreDataStack else { return }
         
-        let path : Spotify.Path = .search(q: "taylor", type: .artist)
+        let path : Spotify.Path = .search(q: string, type: type)
+        
         Spotify.shared.call(path: path) {
             json, error in
             
@@ -44,16 +47,16 @@ final class DataManager {
                     let _ = Track(json: item, in: moc)
                 }
                 do {
-                    try! moc.save()
-                } catch (let error) {
+                    try moc.save()
+                } catch(let error) {
                     print("Context Save failed due to: \(error)")
                 }
                 
             default:
                 break
             }
-            
-            //	process JSON or errors
         }
     }
+    
+    
 }

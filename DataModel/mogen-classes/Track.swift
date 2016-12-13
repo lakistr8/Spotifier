@@ -13,7 +13,7 @@ public class Track: ManagedObject {
 
 extension Track {
     
-    convenience init?(json: [String: Any], in context: NSManagedObjectContext) {
+    convenience init?(json: JSON, in context: NSManagedObjectContext) {
         self.init(context: context)
         
         do {
