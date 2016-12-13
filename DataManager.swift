@@ -2,13 +2,14 @@
 //  DataManager.swift
 //  Spotifier
 //
-//  Created by iosakademija on 12/12/16.
-//  Copyright © 2016 iosakademija. All rights reserved.
+//  Created by Aleksandar Vacić on 1.12.16..
+//  Copyright © 2016. iOS Akademija. All rights reserved.
 //
 
 import Foundation
 import CoreData
 import RTCoreDataStack
+
 
 typealias JSON = [String: Any]
 
@@ -45,23 +46,24 @@ final class DataManager {
                 guard let items = trackResult["items"] as? [JSON] else { return }
                 
                 //	extract track IDs from JSON
-                let jsonIDs = items.flatMap({ item in item["id"] as? String })
+                let jsonIDs = items.flatMap({ item in return item["id"] as? String })
+                let setIDs = Set(jsonIDs)
                 
                 //	pick-up (possibly) existing tracks in Core Data, with those IDs
                 let predicate = NSPredicate(format: "%K IN %@",
                                             Track.Attributes.trackId,
                                             jsonIDs)
                 //	fetch IDs only for existing tracks that are sent in this JSON payload
-                let existingIDS: Set<Track> = Track.fetch(property: Track.Attributes.trackId,
-                                                          context: moc,
-                                                          predicate: predicate)
+                let existingIDs: Set<String> = Track.fetch(property: Track.Attributes.trackId,
+                                                           context: moc,
+                                                           predicate: predicate)
                 
                 //	IDs for new tracks to add:
-                let inserted = jsonIDs.subtracting(existingIDS)
+                let inserted = setIDs.subtracting(existingIDs)
                 //	IDs for existing tracks to update:
-                let updated = jsonIDs.intersection(existingIDS)
+                let updated = setIDs.intersection(existingIDs)
                 //	IDs for tracks to (maybe) delete:
-                let deleted = existingIDS.subtracting(jsonIDs)
+                let deleted = existingIDs.subtracting(setIDs)
                 
                 for item in items {
                     let _ = Track(json: item, in: moc)
