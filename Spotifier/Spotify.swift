@@ -133,9 +133,6 @@ extension Spotify {
         
         var urlRequest: URLRequest {
             
-//          dont do it!, because encode "?"
-//          var r = URLRequest(url: fullURL.appendingPathComponent( queryEncoded(params: params) ))
-            
             guard var components = URLComponents(url: fullURL, resolvingAgainstBaseURL: false) else { fatalError("Invalid URL") }
             components.query = queryEncoded(params: params)
             
@@ -151,9 +148,7 @@ extension Spotify {
 
 extension Spotify {
     
-    typealias JSON = [String:Any]
     typealias CallBack = (JSON?, Error?) -> Void
-    
     
     func call(path: Path, completion: @escaping CallBack) {
         

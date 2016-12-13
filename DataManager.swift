@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import RTCoreDataStack
 
+typealias JSON = [String: Any]
 
 enum DataImportError: Error {
     case typeMismatch(expected: Any, actual: Any, key: String)
@@ -35,8 +36,8 @@ final class DataManager {
             
             switch type {
             case .track:
-                guard let trackResult = json["tracks"] as? Spotify.JSON else { return }
-                guard let items = trackResult["items"] as? [Spotify.JSON] else { return }
+                guard let trackResult = json["tracks"] as? JSON else { return }
+                guard let items = trackResult["items"] as? [JSON] else { return }
                 
                 let moc = coreDataStack.importerContext()
                 for item in items {
