@@ -20,7 +20,7 @@ extension Track: ManagedObjectType {
 
 }
 
-public extension Track {
+extension Track {
 
 	public struct Attributes {
 		static let csvAvailableMarkets = "csvAvailableMarkets"

@@ -20,7 +20,7 @@ extension Artist: ManagedObjectType {
 
 }
 
-public extension Artist {
+extension Artist {
 
 	public struct Attributes {
 		static let artistId = "artistId"

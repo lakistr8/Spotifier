@@ -57,11 +57,11 @@ final class DataManager {
                                                           predicate: predicate)
                 
                 //	IDs for new tracks to add:
-                let inserted = jsonIDs.subtracting(existingIDs)
+                let inserted = jsonIDs.subtracting(existingIDS)
                 //	IDs for existing tracks to update:
-                let updated = jsonIDs.intersection(existingIDs)
+                let updated = jsonIDs.intersection(existingIDS)
                 //	IDs for tracks to (maybe) delete:
-                let deleted = existingIDs.subtracting(jsonIDs)
+                let deleted = existingIDS.subtracting(jsonIDs)
                 
                 for item in items {
                     let _ = Track(json: item, in: moc)
