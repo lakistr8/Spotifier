@@ -32,7 +32,7 @@ class TrackController: UITableViewController {
         let fetchRequest: NSFetchRequest<Track> = Track.fetchRequest()
         
 //      let predicate = NSPredicate(format: "name like 'house'")
-        let predicate = NSPredicate(format: "%K like %@", Track.Attributes.name.rawValue, "house")
+        let predicate = NSPredicate(format: "%K contains[cd] %@", Track.Attributes.name.rawValue, "house")
         fetchRequest.predicate = predicate
         
         let sort0 = NSSortDescriptor(key: "album.name", ascending: true)
@@ -44,6 +44,13 @@ class TrackController: UITableViewController {
                                                managedObjectContext: self.moc!,
                                                sectionNameKeyPath: "album.name",
                                                cacheName: nil)
+        nsfrc.delegate = self
+        do {
+            try nsfrc.performFetch()
+        } catch(let error) {
+            print("Error fetching from Core Data: \(error)")
+        }
+        
         return nsfrc
     }()
 
