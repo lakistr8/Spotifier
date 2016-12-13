@@ -99,6 +99,9 @@ final class DataManager {
                     }
                 }
                 
+                if deleted.count > 0 {
+                    //	TBD.
+                }
                 
                 //	finally, save!
                 do {
