@@ -51,10 +51,17 @@ final class DataManager {
                 let predicate = NSPredicate(format: "%K IN %@",
                                             Track.Attributes.trackId,
                                             jsonIDs)
-                
+                //	fetch IDs only for existing tracks that are sent in this JSON payload
                 let existingIDS: Set<Track> = Track.fetch(property: Track.Attributes.trackId,
                                                           context: moc,
                                                           predicate: predicate)
+                
+                //	IDs for new tracks to add:
+                let inserted = jsonIDs.subtracting(existingIDs)
+                //	IDs for existing tracks to update:
+                let updated = jsonIDs.intersection(existingIDs)
+                //	IDs for tracks to (maybe) delete:
+                let deleted = existingIDs.subtracting(jsonIDs)
                 
                 for item in items {
                     let _ = Track(json: item, in: moc)
