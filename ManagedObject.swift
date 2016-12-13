@@ -9,12 +9,24 @@
 import Foundation
 import CoreData
 
-protocol ManagedObjectType: NSFetchRequestResult {
+public class ManagedObject: NSManagedObject {
+    
+    public override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
+    }
+    
+    required public init?(managedObjectContext moc: NSManagedObjectContext) {
+        guard let entity = NSEntityDescription.entity(forEntityName: "ManagedObject", in: moc) else { return nil }
+        super.init(entity: entity, insertInto: moc)
+    }
+}
+
+public protocol ManagedObjectType: NSFetchRequestResult {
     static var entityName: String { get }
     static func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription?
 }
 
-extension ManagedObjectType where Self: NSManagedObject {
+public extension ManagedObjectType where Self: ManagedObject {
     
     /// Fetches a set of values for the given property.
     ///
@@ -23,7 +35,7 @@ extension ManagedObjectType where Self: NSManagedObject {
     ///   - context: `NSManagedObjectContext` in which to perform the fetch
     ///   - predicate: (optional) `NSPredicate` condition to apply to the fetch
     /// - Returns: a `Set` of values with appropriate type
-    static func fetch<T:Hashable>(property: String, context: NSManagedObjectContext, predicate: NSPredicate? = nil) -> Set<T> {
+    public static func fetch<T:Hashable>(property: String, context: NSManagedObjectContext, predicate: NSPredicate? = nil) -> Set<T> {
         guard let entity = Self.entity(managedObjectContext: context) else { return [] }
         
         let fetchRequest = NSFetchRequest<NSDictionary>(entityName: Self.entityName)
@@ -46,9 +58,9 @@ extension ManagedObjectType where Self: NSManagedObject {
     ///   - predicate: (optional) `NSPredicate` condition to apply to the fetch
     ///   - sortDescriptors: (optional) array of `NSSortDescriptio`s to apply to the fetched results
     /// - Returns: an Array of Entity objects of appropriate type
-    static func fetch(withContext context: NSManagedObjectContext,
-                      predicate: NSPredicate? = nil,
-                      sortedWith sortDescriptors: [NSSortDescriptor]? = nil
+    public static func fetch(withContext context: NSManagedObjectContext,
+                             predicate: NSPredicate? = nil,
+                             sortedWith sortDescriptors: [NSSortDescriptor]? = nil
         ) -> [Self] {
         
         let fr = fetchRequest(withContext: context, predicate: predicate, sortedWith: sortDescriptors)
@@ -63,9 +75,9 @@ extension ManagedObjectType where Self: NSManagedObject {
     ///   - predicate: (optional) `NSPredicate` condition to apply to the fetch
     ///   - sortDescriptors: (optional) array of `NSSortDescriptio`s to apply
     /// - Returns: Instance of `NSFetchRequest` with appropriate type
-    static func fetchRequest(withContext context: NSManagedObjectContext,
-                             predicate: NSPredicate? = nil,
-                             sortedWith sortDescriptors: [NSSortDescriptor]? = nil
+    public static func fetchRequest(withContext context: NSManagedObjectContext,
+                                    predicate: NSPredicate? = nil,
+                                    sortedWith sortDescriptors: [NSSortDescriptor]? = nil
         ) -> NSFetchRequest<Self> {
         
         let fetchRequest = NSFetchRequest<Self>(entityName: entityName)
@@ -85,10 +97,10 @@ extension ManagedObjectType where Self: NSManagedObject {
     ///   - predicate: (optional) `NSPredicate` condition to apply to the fetch
     ///   - sortDescriptors: (optional) array of `NSSortDescriptio`s to apply
     /// - Returns: Instance of `NSFetchedResultsController` with appropriate type
-    static func fetchedResultsController(withContext context: NSManagedObjectContext,
-                                         sectionNameKeyPath: String? = nil,
-                                         predicate: NSPredicate? = nil,
-                                         sortedWith sortDescriptors: [NSSortDescriptor]? = nil
+    public static func fetchedResultsController(withContext context: NSManagedObjectContext,
+                                                sectionNameKeyPath: String? = nil,
+                                                predicate: NSPredicate? = nil,
+                                                sortedWith sortDescriptors: [NSSortDescriptor]? = nil
         ) -> NSFetchedResultsController<Self> {
         
         let fr = fetchRequest(withContext: context, predicate: predicate, sortedWith: sortDescriptors)
