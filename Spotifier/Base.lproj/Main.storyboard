@@ -86,6 +86,10 @@
                                             <constraint firstAttribute="trailing" secondItem="x1i-9D-w5P" secondAttribute="trailing" priority="999" id="t0d-mL-mZw"/>
                                             <constraint firstItem="x1i-9D-w5P" firstAttribute="top" secondItem="ouX-5J-wbk" secondAttribute="top" id="v99-ta-zyg"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="photoView" destination="V1p-mN-P7i" id="Rbm-gZ-szf"/>
+                                            <outlet property="titleLabel" destination="sYQ-3I-t0l" id="1mt-Z9-Cov"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

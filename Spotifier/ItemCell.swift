@@ -10,4 +10,18 @@ import UIKit
 
 class ItemCell: UICollectionViewCell {
     
+    @IBOutlet fileprivate weak var photoView : UIImageView!
+    @IBOutlet fileprivate weak var titleLabel : UILabel!
+    
+    
+    
+}
+
+
+extension ItemCell {
+    
+    func configure() {
+        
+    }
+    
 }
