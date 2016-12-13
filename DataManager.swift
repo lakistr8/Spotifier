@@ -79,6 +79,7 @@ final class DataManager {
                 }
                 
                 if updated.count > 0 {
+                    //	fetch all tracks taht should be in one call
                     let predicate = NSPredicate(format: "%K IN %@",
                                                 Track.Attributes.trackId,
                                                 updated)
@@ -92,13 +93,11 @@ final class DataManager {
                         })
                         //	there should be only one JSON item to fit
                         guard let item = filteredItems.first else { continue }
+                        guard let track = tracks.filter({ t in return t.trackId == id }).first else { continue }
                         
-                        
-                        let _ = Track(json: item, in: moc)
+                        try? track.update(with: item)
                     }
                 }
-                
-                
                 
                 
                 //	finally, save!

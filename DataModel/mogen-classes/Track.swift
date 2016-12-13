@@ -23,18 +23,7 @@ extension Track {
         self.init(context: context)
         
         do {
-            guard let trackId = json["id"] as? String else { throw DataImportError.typeMismatch(expected: String.self, actual: type(of: json["id"]), key: "id") }
-            guard let name = json["name"] as? String else { throw DataImportError.typeMismatch(expected: String.self, actual: type(of: json["name"]), key: "name") }
-            
-            self.trackId = trackId
-            self.name = name
-            
-            if let discNum = json["disc_number"] as? Int16 {
-                self.discNumber = discNum
-            }
-            if let durationMilliseconds = json["duration_ms"] as? Int64 {
-                self.durationMilliseconds = durationMilliseconds
-            }
+            try update(with: json)
             
         } catch(let error) {
             switch error {
@@ -46,6 +35,21 @@ extension Track {
             
             //	if processing fails, then throw it out
             context.delete(self)
+        }
+    }
+    
+    func update(with json: JSON) throws {
+        guard let trackId = json["id"] as? String else { throw DataImportError.typeMismatch(expected: String.self, actual: type(of: json["id"]), key: "id") }
+        guard let name = json["name"] as? String else { throw DataImportError.typeMismatch(expected: String.self, actual: type(of: json["name"]), key: "name") }
+        
+        self.trackId = trackId
+        self.name = name
+        
+        if let discNum = json["disc_number"] as? Int16 {
+            self.discNumber = discNum
+        }
+        if let durationMilliseconds = json["duration_ms"] as? Int64 {
+            self.durationMilliseconds = durationMilliseconds
         }
     }
 }
