@@ -57,28 +57,28 @@ class TrackController: UITableViewController {
     
 }
 
-    // MARK: - Table view data source
-
+// MARK: - Table view data source
 extension TrackController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
         guard let _ = moc else { return 1 }
         
-        guard let sections = frc.section else { return 1 }
+        guard let sections = frc.sections else { return 1 }
         return sections.count
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView,
+                            numberOfRowsInSection section: Int) -> Int {
         guard let _ = moc else { return 0 }
         
         guard let sections = frc.sections else { return 0 }
         return sections[section].numberOfObjects
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TrackCell.self), for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TrackCell.self),
+                                                 for: indexPath)
         
         let item = frc.object(at: indexPath)
         
@@ -88,6 +88,7 @@ extension TrackController {
         return cell
     }
 }
+
 
 
 extension TrackController: NSFetchedResultsControllerDelegate {
