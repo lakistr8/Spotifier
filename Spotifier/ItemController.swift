@@ -20,12 +20,12 @@ class ItemController: UIViewController {
 extension ItemController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 6
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 88
+        return 300
     }
     
     func collectionView(_ collectionView: UICollectionView,

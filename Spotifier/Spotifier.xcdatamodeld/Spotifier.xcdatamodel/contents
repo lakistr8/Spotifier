@@ -37,8 +37,8 @@
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="tracks" inverseEntity="Artist" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Album" positionX="-54" positionY="-9" width="128" height="180"/>
-        <element name="Artist" positionX="-63" positionY="-18" width="128" height="180"/>
-        <element name="Track" positionX="-36" positionY="9" width="128" height="225"/>
+        <element name="Album" positionX="160" positionY="27" width="128" height="178"/>
+        <element name="Artist" positionX="-20" positionY="207" width="128" height="180"/>
+        <element name="Track" positionX="162" positionY="279" width="128" height="225"/>
     </elements>
 </model>
