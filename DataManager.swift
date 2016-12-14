@@ -45,7 +45,7 @@ final class DataManager {
                 guard let trackResult = json["tracks"] as? JSON else { return }
                 guard let items = trackResult["items"] as? [JSON] else { return }
                 
-                self.processJSONTracks(items, in: moc)
+                let tracks = self.processJSONTracks(items, in: moc)
                 
             default:
                 break
@@ -65,7 +65,9 @@ final class DataManager {
 
 extension DataManager {
     
-    func processJSONTracks(_ items: [JSON], in moc: NSManagedObjectContext) {
+    func processJSONTracks(_ items: [JSON], in moc: NSManagedObjectContext) -> [Track] {
+        var arr = [Track]()
+        
         //	extract track IDs from JSON
         let jsonIDs = items.flatMap({ item in return item["id"] as? String })
         let setIDs = Set(jsonIDs)
@@ -96,7 +98,9 @@ extension DataManager {
             //	there should be only one item
             guard let item = filteredItems.first else { continue }
             //	insert that item
-            let _ = Track(json: item, in: moc)
+            if let track = Track(json: item, in: moc) {
+                arr.append(track)
+            }
         }
         
         if updated.count > 0 {
@@ -120,6 +124,7 @@ extension DataManager {
                 
                 do {
                     try track.update(with: item)
+                    arr.append(track)
                 } catch (let coredataError) {
                     print(coredataError)
                 }
@@ -129,5 +134,7 @@ extension DataManager {
         if deleted.count > 0 {
             //	TBD.
         }
+        
+        return arr
     }
 }
