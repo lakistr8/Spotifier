@@ -121,7 +121,10 @@ extension DataManager {
                 //	there should be only one JSON item for each `id` in `updated`
                 guard let item = filteredItems.first else { continue }
                 //	similarly, there should be only one object in Core Data for any given `id`
-                guard let mobject = mobjects.filter({ mo in return mo.trackId == id }).first else { continue }
+                guard let mobject = mobjects.filter({ mo in
+                    guard let moId = mo.value(forKey: objectIDProperty) as? String else { fatalError("Failed to convert object's id property to String") }
+                    return moId == id
+                }).first else { continue }
                 
                 do {
                     try mobject.update(with: item)
