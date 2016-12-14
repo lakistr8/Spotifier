@@ -67,6 +67,7 @@ extension DataManager {
     
     func processJSONTracks(_ items: [JSON], in moc: NSManagedObjectContext) -> [Track] {
         var arr = [Track]()
+        let objectIDProperty = Track.Attributes.trackId
         
         //	extract IDs from JSON
         let jsonIDs = items.flatMap({ item in return item["id"] as? String })
@@ -74,10 +75,10 @@ extension DataManager {
         
         //	pick-up (possibly) existing objects in Core Data, with those IDs
         let predicate = NSPredicate(format: "%K IN %@",
-                                    Track.Attributes.trackId,
+                                    objectIDProperty,
                                     jsonIDs)
         //	fetch IDs only for existing objects that are sent in this JSON payload
-        let existingIDs: Set<String> = Track.fetch(property: Track.Attributes.trackId,
+        let existingIDs: Set<String> = Track.fetch(property: objectIDProperty,
                                                    context: moc,
                                                    predicate: predicate)
         
@@ -107,7 +108,7 @@ extension DataManager {
             //	fetch all existing objects, using just one call
             //	this predicate means: `FETCH Object WHERE objectId IN updated`
             let predicate = NSPredicate(format: "%K IN %@",
-                                        Track.Attributes.trackId,
+                                        objectIDProperty,
                                         updated)
             let mobjects = Track.fetch(withContext: moc, predicate: predicate)
             
