@@ -68,44 +68,44 @@ extension DataManager {
     func processJSONTracks(_ items: [JSON], in moc: NSManagedObjectContext) -> [Track] {
         var arr = [Track]()
         
-        //	extract track IDs from JSON
+        //	extract IDs from JSON
         let jsonIDs = items.flatMap({ item in return item["id"] as? String })
         let setIDs = Set(jsonIDs)
         
-        //	pick-up (possibly) existing tracks in Core Data, with those IDs
+        //	pick-up (possibly) existing objects in Core Data, with those IDs
         let predicate = NSPredicate(format: "%K IN %@",
                                     Track.Attributes.trackId,
                                     jsonIDs)
-        //	fetch IDs only for existing tracks that are sent in this JSON payload
+        //	fetch IDs only for existing objects that are sent in this JSON payload
         let existingIDs: Set<String> = Track.fetch(property: Track.Attributes.trackId,
                                                    context: moc,
                                                    predicate: predicate)
         
-        //	IDs for new tracks to add:
+        //	IDs for new objects to create:
         let inserted = setIDs.subtracting(existingIDs)
-        //	IDs for existing tracks to update:
+        //	IDs for existing objects to update them:
         let updated = setIDs.intersection(existingIDs)
-        //	IDs for tracks to (maybe) delete:
+        //	IDs for objects to (maybe) delete:
         let deleted = existingIDs.subtracting(setIDs)
         
-        //	insert all new Tracks
+        //	insert all new objects
         for id in inserted {
             //	find JSON for current ID
             let filteredItems = items.filter({ item in
                 guard let jsonID = item["id"] as? String else { return false }
                 return jsonID == id
             })
-            //	there should be only one item
+            //	there should be only one JSON item
             guard let item = filteredItems.first else { continue }
-            //	create Track managed object using that JSON item
+            //	create managed object using that JSON item
             if let mobject = Track(json: item, in: moc) {
                 arr.append(mobject)
             }
         }
         
         if updated.count > 0 {
-            //	fetch all Tracks as full objects, using just one call
-            //	this predicate means: FETCH Tracks WHERE trackId IN updated
+            //	fetch all existing objects, using just one call
+            //	this predicate means: `FETCH Object WHERE objectId IN updated`
             let predicate = NSPredicate(format: "%K IN %@",
                                         Track.Attributes.trackId,
                                         updated)
@@ -119,7 +119,7 @@ extension DataManager {
                 })
                 //	there should be only one JSON item for each `id` in `updated`
                 guard let item = filteredItems.first else { continue }
-                //	similarly, there should be only one Track in Core Data for any given `id`
+                //	similarly, there should be only one object in Core Data for any given `id`
                 guard let mobject = mobjects.filter({ mo in return mo.trackId == id }).first else { continue }
                 
                 do {
