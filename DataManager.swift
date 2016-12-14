@@ -97,9 +97,9 @@ extension DataManager {
             })
             //	there should be only one item
             guard let item = filteredItems.first else { continue }
-            //	insert that item
-            if let track = Track(json: item, in: moc) {
-                arr.append(track)
+            //	create Track managed object using that JSON item
+            if let mobject = Track(json: item, in: moc) {
+                arr.append(mobject)
             }
         }
         
@@ -109,7 +109,7 @@ extension DataManager {
             let predicate = NSPredicate(format: "%K IN %@",
                                         Track.Attributes.trackId,
                                         updated)
-            let tracks = Track.fetch(withContext: moc, predicate: predicate)
+            let mobjects = Track.fetch(withContext: moc, predicate: predicate)
             
             for id in updated {
                 //	find JSON for current `id`
@@ -120,11 +120,11 @@ extension DataManager {
                 //	there should be only one JSON item for each `id` in `updated`
                 guard let item = filteredItems.first else { continue }
                 //	similarly, there should be only one Track in Core Data for any given `id`
-                guard let track = tracks.filter({ t in return t.trackId == id }).first else { continue }
+                guard let mobject = mobjects.filter({ mo in return mo.trackId == id }).first else { continue }
                 
                 do {
-                    try track.update(with: item)
-                    arr.append(track)
+                    try mobject.update(with: item)
+                    arr.append(mobject)
                 } catch (let coredataError) {
                     print(coredataError)
                 }
@@ -137,4 +137,5 @@ extension DataManager {
         
         return arr
     }
+    
 }
