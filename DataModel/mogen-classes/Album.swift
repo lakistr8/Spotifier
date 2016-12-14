@@ -16,3 +16,34 @@ public class Album: ManagedObject {
     }
 }
 
+extension Album {
+    
+    convenience init?(json: JSON, in context: NSManagedObjectContext) {
+        self.init(context: context)
+        
+        do {
+            try update(with: json)
+            
+        } catch(let error) {
+            switch error {
+            case is DataImportError:
+                print(error)
+            default:
+                print("some other error")
+            }
+            
+            //	if processing fails, then throw it out
+            context.delete(self)
+        }
+    }
+    
+    func update(with json: JSON) throws {
+        guard let albumId = json["id"] as? String else { throw DataImportError.typeMismatch(expected: String.self, actual: type(of: json["id"]), key: "id") }
+        guard let name = json["name"] as? String else { throw DataImportError.typeMismatch(expected: String.self, actual: type(of: json["name"]), key: "name") }
+        
+        self.albumId = albumId
+        self.name = name
+        
+        //	..	go through all other properties
+    }
+}
