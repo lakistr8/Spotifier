@@ -79,23 +79,29 @@ final class DataManager {
                 }
                 
                 if updated.count > 0 {
-                    //	fetch all tracks taht should be in one call
+                    //	fetch all Tracks as full objects, using just one call
+                    //	this predicate means: FETCH Tracks WHERE trackId IN updated
                     let predicate = NSPredicate(format: "%K IN %@",
                                                 Track.Attributes.trackId,
                                                 updated)
                     let tracks = Track.fetch(withContext: moc, predicate: predicate)
                     
                     for id in updated {
-                        //	find JSON for current ID
+                        //	find JSON for current `id`
                         let filteredItems = items.filter({ item in
                             guard let jsonID = item["id"] as? String else { return false }
                             return jsonID == id
                         })
-                        //	there should be only one JSON item to fit
+                        //	there should be only one JSON item for each `id` in `updated`
                         guard let item = filteredItems.first else { continue }
+                        //	similarly, there should be only one Track in Core Data for any given `id`
                         guard let track = tracks.filter({ t in return t.trackId == id }).first else { continue }
                         
-                        try? track.update(with: item)
+                        do {
+                            try track.update(with: item)
+                        } catch (let coredataError) {
+                            print(coredataError)
+                        }
                     }
                 }
                 
