@@ -44,6 +44,26 @@ extension Artist: JSONProcessing {
         self.artistId = artistId
         self.name = name
         
-        //	..	go through all other properties
+        if let followers = json["followers"] as? JSON, let count = followers["total"] as? Int64 {
+            self.followersCount = count
+        }
+        
+        if let arrGenres = json["genres"] as? [String] {
+            self.csvGenres = arrGenres.joined(separator: ", ")
+        }
+        
+        if let images = json["images"] as? [JSON], let url = images.first?["url"] as? String {
+            self.imageLink = url
+        }
+        
+        if let popularity = json["popularity"] as? Int64 {
+            self.popularity = popularity
+        }
+        
+        if let uri = json["uri"] as? String {
+            self.spotifyURL = uri
+        }
+        
+        //		self.albums..?
     }
 }
