@@ -61,6 +61,11 @@ final class DataManager {
                     guard let ai = ti["album"] as? JSON, let albumID = ai["id"] as? String else { continue }
                     //	find that album and connect it to the track's relationship
                     track.album = albums.filter({ $0.albumId == albumID }).first
+                    
+                    //	fetch artist ID from the track-item's JSON
+                    guard let arti = ai["artists"] as? JSON, let artistID = arti["id"] as? String else { continue }
+                    //	find that artist and connect it to the album's relationship
+                    track.album?.artist = artists.filter({ $0.artistId == artistID }).first
                 }
                 
             case .album:
