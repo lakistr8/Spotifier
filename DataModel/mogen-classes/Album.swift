@@ -44,6 +44,27 @@ extension Album: JSONProcessing {
         self.albumId = albumId
         self.name = name
         
-        //	..	go through all other properties
+        if let arr = json["available_markets"] as? [String] {
+            self.csvAvailableMarkets = arr.joined(separator: ",")
+        }
+        
+        if let images = json["images"] as? [JSON], let url = images.first?["url"] as? String {
+            self.imageLink = url
+        }
+        
+        if let uri = json["uri"] as? String {
+            self.spotifyURI = uri
+        }
+        
+        if let str = json["label"] as? String {
+            self.labelName = str
+        }
+        
+        if let str = json["release_date"] as? String {
+            self.dateReleased = DateFormatter.spotifyDayFormatter.date(from: str)
+        }
+        
+        //		self.tracks..?
+        //		self.artist..?
     }
 }

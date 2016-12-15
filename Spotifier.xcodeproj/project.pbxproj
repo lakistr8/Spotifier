@@ -31,6 +31,7 @@
 		E87C33381DFFF4ED00D8895A /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C33371DFFF4ED00D8895A /* ManagedObject.swift */; };
 		E87C333A1E0000A400D8895A /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C33391E0000A400D8895A /* ItemController.swift */; };
 		E87C333C1E0000E500D8895A /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C333B1E0000E500D8895A /* ItemCell.swift */; };
+		E8D6490F1E02B7E20058A7F9 /* Foundation-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6490E1E02B7E20058A7F9 /* Foundation-Extensions.swift */; };
 		E8E3FAC71DFC331A001757E4 /* TrackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3FAC61DFC331A001757E4 /* TrackController.swift */; };
 		E8E3FAC91DFC332B001757E4 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3FAC81DFC332B001757E4 /* TrackCell.swift */; };
 		E8E3FACE1DFC4171001757E4 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3FACD1DFC4171001757E4 /* Spotify.swift */; };
@@ -56,6 +57,7 @@
 		E87C33371DFFF4ED00D8895A /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObject.swift; path = ../ManagedObject.swift; sourceTree = "<group>"; };
 		E87C33391E0000A400D8895A /* ItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		E87C333B1E0000E500D8895A /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		E8D6490E1E02B7E20058A7F9 /* Foundation-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Foundation-Extensions.swift"; path = "DataModel/mogen-properties/Foundation-Extensions.swift"; sourceTree = "<group>"; };
 		E8E3FAC61DFC331A001757E4 /* TrackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackController.swift; sourceTree = "<group>"; };
 		E8E3FAC81DFC332B001757E4 /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		E8E3FACD1DFC4171001757E4 /* Spotify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spotify.swift; path = Spotifier/Spotify.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				E8E3FAD11DFCC52D001757E4 /* DataModel */,
+				E8D6490E1E02B7E20058A7F9 /* Foundation-Extensions.swift */,
 				E8E3FACD1DFC4171001757E4 /* Spotify.swift */,
 				E810170F1DFAEEB8002C5EAB /* Spotifier */,
 				E810170E1DFAEEB8002C5EAB /* Products */,
@@ -316,6 +319,7 @@
 				E8E3FAC71DFC331A001757E4 /* TrackController.swift in Sources */,
 				E8E3FADC1DFCC52D001757E4 /* Track.swift in Sources */,
 				E81017111DFAEEB8002C5EAB /* AppDelegate.swift in Sources */,
+				E8D6490F1E02B7E20058A7F9 /* Foundation-Extensions.swift in Sources */,
 				E8E3FAC91DFC332B001757E4 /* TrackCell.swift in Sources */,
 				E8E3FADA1DFCC52D001757E4 /* Album.swift in Sources */,
 				E8E3FADB1DFCC52D001757E4 /* Artist.swift in Sources */,
