@@ -45,7 +45,8 @@ final class DataManager {
                 guard let trackResult = json["tracks"] as? JSON else { return }
                 guard let items = trackResult["items"] as? [JSON] else { return }
                 
-                let tracks = self.processJSONTracks(items, in: moc)
+                //				let tracks = self.processJSONTracks(items, in: moc)
+                let tracks: [Track] = self.processJSON(items, in: moc)
                 
             default:
                 break
