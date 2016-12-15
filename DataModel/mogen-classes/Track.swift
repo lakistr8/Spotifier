@@ -50,5 +50,28 @@ extension Track: JSONProcessing {
         if let durationMilliseconds = json["duration_ms"] as? Int64 {
             self.durationMilliseconds = durationMilliseconds
         }
+        
+        if let arr = json["available_markets"] as? [String] {
+            self.csvAvailableMarkets = arr.joined(separator: ",")
+        }
+        
+        if let images = json["images"] as? [JSON], let url = images.first?["url"] as? String {
+            self.imageLink = url
+        }
+        
+        if let b = json["explicit"] as? Bool {
+            self.isExplicit = b
+        }
+        
+        if let num = json["track_number"] as? Int16 {
+            self.trackNumber = num
+        }
+        
+        if let uri = json["uri"] as? String {
+            self.spotifyURI = uri
+        }
+        
+        //		self.album..?
     }
 }
+
