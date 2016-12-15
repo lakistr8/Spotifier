@@ -64,7 +64,7 @@ extension Track: JSONProcessing {
         }
         
         if let num = json["track_number"] as? Int16 {
-            self.trackNumber = num
+            self.discNumber = num
         }
         
         if let uri = json["uri"] as? String {

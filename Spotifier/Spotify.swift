@@ -2,8 +2,8 @@
 //  Spotify.swift
 //  Spotifier
 //
-//  Created by iosakademija on 12/10/16.
-//  Copyright © 2016 iosakademija. All rights reserved.
+//  Created by Aleksandar Vacić on 29.11.16..
+//  Copyright © 2016. iOS Akademija. All rights reserved.
 //
 
 import Foundation
@@ -15,9 +15,7 @@ final class Spotify {
     private init() {}
     
     static let baseURL : URL = {
-        
-        guard let url = URL(string: "https://api.spotify.com/v1/") else {
-            fatalError("faild to create a base url!")}
+        guard let url = URL(string: "https://api.spotify.com/v1/") else { fatalError("Can't create base URL!") }
         return url
     }()
     
@@ -29,11 +27,7 @@ final class Spotify {
             "Accept-Encoding": "gzip, deflate"
         ]
     }()
-    
 }
-
-
-
 
 extension Spotify {
     
@@ -42,7 +36,6 @@ extension Spotify {
     }
     
     enum SearchType: String {
-        
         case artist
         case album
         case track
@@ -56,59 +49,59 @@ extension Spotify {
         
         case tracks
         
-        var apiValue: String {
+        fileprivate var apiValue: String {
             switch self {
-            case .relatedArtists:
-                return "related-artists"
             case .topTracks:
                 return "top-tracks"
+            case .relatedArtists:
+                return "related-artists"
             default:
                 return self.rawValue
             }
         }
-        
     }
     
     enum Path {
         
         case search(q: String, type: SearchType)
-        case artist(id: String, type: SearchType?)
-        case albums(id: String, type: SearchType?)
+        case artists(id: String, type: ItemType?)
+        case albums(id: String, type: ItemType?)
         
         private var method: Method {
             return .GET
         }
         
         private var headerFields: [String: String] {
-//            var headers = commonHeaders
+            //			var headers = commonHeaders
             //			switch self {
             //			case .albums:
             //				headers["Accept"] = "text/html"
             //			default:
             //				break
             //			}
-//            return headers
+            //			return headers
             return commonHeaders
         }
         
-        var fullURL : URL {
-            
+        private var fullURL: URL {
             var path = ""
             
             switch self {
             case .search:
                 path = "search"
-            case .artist(let id, let type):
-                path = "artist/\(id)/\(type)"
+            case .artists(let id, let type):
+                let t = type
+                path = "artists/\(id)/\(t)"
             default:
                 break
             }
+            
             return baseURL.appendingPathComponent(path)
         }
         
-        
         private var params: [String: String] {
             var p = [String: String]()
+            
             switch self {
             case .search(let q, let type):
                 p["q"] = q
@@ -121,10 +114,11 @@ extension Spotify {
             return p
         }
         
-        private func queryEncoded(params : [String: String]) -> String {
+        private func queryEncoded(params: [String: String]) -> String {
             if params.count == 0 { return "" }
+            
             var arr = [String]()
-            for (key,value) in params {
+            for (key, value) in params {
                 let s = "\(key)=\(value)"
                 arr.append(s)
             }
@@ -133,7 +127,6 @@ extension Spotify {
         }
         
         var urlRequest: URLRequest {
-            
             guard var components = URLComponents(url: fullURL, resolvingAgainstBaseURL: false) else { fatalError("Invalid URL") }
             components.query = queryEncoded(params: params)
             
@@ -142,16 +135,19 @@ extension Spotify {
             r.httpMethod = method.rawValue
             r.allHTTPHeaderFields = headerFields
             
+            
+            
             return r
         }
+        
     }
 }
 
+
 extension Spotify {
+    typealias Callback = ( JSON?, Error? ) -> Void
     
-    typealias CallBack = (JSON?, Error?) -> Void
-    
-    func call(path: Path, completion: @escaping CallBack) {
+    func call(path: Path, completion: @escaping Callback) {
         
         let urlRequest = path.urlRequest
         
@@ -182,18 +178,16 @@ extension Spotify {
             guard
                 let obj = try? JSONSerialization.jsonObject(with: data),
                 let json = obj as? JSON
-            else {
-                completion(nil, nil)
-                return
+                else {
+                    completion(nil, nil)
+                    return
             }
-            completion(json, nil)
             
+            completion(json, nil)
         }
         
         task.resume()
     }
-    
-    
 }
 
 
