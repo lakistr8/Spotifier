@@ -47,12 +47,12 @@ final class DataManager {
                 let _: [Track] = self.processJSON(items: items, in: moc, idProperty: Track.Attributes.trackId)
                 
             case .album:
-                guard let trackResult = json["tracks"] as? JSON else { return }
+                guard let trackResult = json["albums"] as? JSON else { return }
                 guard let items = trackResult["items"] as? [JSON] else { return }
                 let _: [Album] = self.processJSON(items: items, in: moc, idProperty: Album.Attributes.albumId)
                 
             case .artist:
-                guard let trackResult = json["tracks"] as? JSON else { return }
+                guard let trackResult = json["artists"] as? JSON else { return }
                 guard let items = trackResult["items"] as? [JSON] else { return }
                 let _: [Artist] = self.processJSON(items: items, in: moc, idProperty: Artist.Attributes.artistId)
                 
@@ -155,3 +155,4 @@ extension DataManager {
         return arr
     }
 }
+
