@@ -44,6 +44,9 @@ final class DataManager {
             case .track:
                 guard let trackResult = json["tracks"] as? JSON else { return }
                 guard let items = trackResult["items"] as? [JSON] else { return }
+                let albumItems = items.flatMap({ $0["album"] as? JSON })
+                let artistItems = albumItems.flatMap({ $0["artists"] as? [JSON] }).flatMap({ $0 })
+                
                 let _: [Track] = self.processJSON(items: items, in: moc, idProperty: Track.Attributes.trackId)
                 
             case .album:
