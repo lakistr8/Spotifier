@@ -51,6 +51,13 @@ final class DataManager {
                 let albums: [Album] = self.processJSON(items: items, in: moc, idProperty: Album.Attributes.albumId)
                 let tracks: [Track] = self.processJSON(items: items, in: moc, idProperty: Track.Attributes.trackId)
                 
+                for ti in items {
+                    //	ID for the current track
+                    guard let trackID = ti["id"] as? String else { continue }
+                    //	find Track managed object for current id
+                    guard let track = tracks.filter({ $0.trackId == trackID }).first else { continue }
+                }
+                
             case .album:
                 guard let trackResult = json["albums"] as? JSON else { return }
                 guard let items = trackResult["items"] as? [JSON] else { return }
