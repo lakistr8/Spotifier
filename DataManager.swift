@@ -75,7 +75,7 @@ protocol JSONManagedObjectType {
 
 extension DataManager {
     
-    func processJSON<T>(items: [JSON], in moc: NSManagedObjectContext) -> [T] where T: JSONProcessing, T: JSONManagedObjectType {
+    func processJSON<T>(items: [JSON], in moc: NSManagedObjectContext) -> [T] where T: JSONProcessing, T: JSONManagedObjectType, T: NSObject {
         var arr = [T]()
         let objectIDProperty = Track.Attributes.trackId
         
