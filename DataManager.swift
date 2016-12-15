@@ -47,8 +47,8 @@ final class DataManager {
                 let albumItems = items.flatMap({ $0["album"] as? JSON })
                 let artistItems = albumItems.flatMap({ $0["artists"] as? [JSON] }).flatMap({ $0 })
                 
-                let artists: [Artist] = self.processJSON(items: items, in: moc, idProperty: Artist.Attributes.artistId)
-                let albums: [Album] = self.processJSON(items: items, in: moc, idProperty: Album.Attributes.albumId)
+                let artists: [Artist] = self.processJSON(items: artistItems, in: moc, idProperty: Artist.Attributes.artistId)
+                let albums: [Album] = self.processJSON(items: albumItems, in: moc, idProperty: Album.Attributes.albumId)
                 let tracks: [Track] = self.processJSON(items: items, in: moc, idProperty: Track.Attributes.trackId)
                 
                 for ti in items {
