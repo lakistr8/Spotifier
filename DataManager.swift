@@ -56,6 +56,11 @@ final class DataManager {
                     guard let trackID = ti["id"] as? String else { continue }
                     //	find Track managed object for current id
                     guard let track = tracks.filter({ $0.trackId == trackID }).first else { continue }
+                    
+                    //	fetch album ID from the track-item's JSON
+                    guard let ai = ti["album"] as? JSON, let albumID = ai["id"] as? String else { continue }
+                    //	find that album and connect it to the track's relationship
+                    track.album = albums.filter({ $0.albumId == albumID }).first
                 }
                 
             case .album:
@@ -167,4 +172,5 @@ extension DataManager {
         return arr
     }
 }
+
 
