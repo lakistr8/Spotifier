@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 
 @objc(Track)
-public class Track: ManagedObject {
+public final class Track: ManagedObject {
     
     // MARK: - Life cycle methods
     
@@ -16,8 +16,7 @@ public class Track: ManagedObject {
     }
 }
 
-
-extension Track {
+extension Track: JSONProcessing {
     
     convenience init?(json: JSON, in context: NSManagedObjectContext) {
         self.init(context: context)

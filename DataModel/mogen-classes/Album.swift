@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 
 @objc(Album)
-public class Album: ManagedObject {
+public final class Album: ManagedObject {
     
     // MARK: - Life cycle methods
     
@@ -16,7 +16,7 @@ public class Album: ManagedObject {
     }
 }
 
-extension Album {
+extension Album: JSONProcessing {
     
     convenience init?(json: JSON, in context: NSManagedObjectContext) {
         self.init(context: context)
