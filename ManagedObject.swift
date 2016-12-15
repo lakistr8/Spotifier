@@ -1,13 +1,14 @@
 //
 //  ManagedObject.swift
-//  Spotifier
+//  Radiant Tap Essentials
 //
-//  Created by iosakademija on 12/13/16.
-//  Copyright © 2016 iosakademija. All rights reserved.
+//  Copyright © 2016 Aleksandar Vacić, Radiant Tap
+//  MIT License · http://choosealicense.com/licenses/mit/
 //
 
 import Foundation
 import CoreData
+
 
 public class ManagedObject: NSManagedObject {
     
@@ -24,6 +25,11 @@ public class ManagedObject: NSManagedObject {
 public protocol ManagedObjectType: NSFetchRequestResult {
     static var entityName: String { get }
     static func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription?
+    
+    static func fetch<T:Hashable>(property: String, context: NSManagedObjectContext, predicate: NSPredicate?) -> Set<T>
+    
+    static func fetch(withContext context: NSManagedObjectContext, predicate: NSPredicate?) -> [Self]
+    static func fetch(withContext context: NSManagedObjectContext, predicate: NSPredicate?, sortedWith sortDescriptors: [NSSortDescriptor]?) -> [Self]
 }
 
 public extension ManagedObjectType where Self: ManagedObject {
@@ -50,6 +56,9 @@ public extension ManagedObjectType where Self: ManagedObject {
         return Set<T>(arr)
     }
     
+    public static func fetch(withContext context: NSManagedObjectContext, predicate: NSPredicate? = nil) -> [Self] {
+        return fetch(withContext: context, predicate: predicate, sortedWith: nil)
+    }
     
     /// Fetches objects of given type, **including** any pending changes in the context
     ///
@@ -58,10 +67,7 @@ public extension ManagedObjectType where Self: ManagedObject {
     ///   - predicate: (optional) `NSPredicate` condition to apply to the fetch
     ///   - sortDescriptors: (optional) array of `NSSortDescriptio`s to apply to the fetched results
     /// - Returns: an Array of Entity objects of appropriate type
-    public static func fetch(withContext context: NSManagedObjectContext,
-                             predicate: NSPredicate? = nil,
-                             sortedWith sortDescriptors: [NSSortDescriptor]? = nil
-        ) -> [Self] {
+    public static func fetch(withContext context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortedWith sortDescriptors: [NSSortDescriptor]? = nil) -> [Self] {
         
         let fr = fetchRequest(withContext: context, predicate: predicate, sortedWith: sortDescriptors)
         guard let results = try? context.fetch(fr) else { return [] }

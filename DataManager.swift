@@ -68,14 +68,9 @@ protocol JSONProcessing: ManagedObjectType {
     func update(with json: JSON) throws
 }
 
-protocol JSONManagedObjectType {
-    static func fetch<T:Hashable>(property: String, context: NSManagedObjectContext, predicate: NSPredicate?) -> Set<T>
-    static func fetch(withContext context: NSManagedObjectContext, predicate: NSPredicate?) -> [Self]
-}
-
 extension DataManager {
     
-    func processJSON<T>(items: [JSON], in moc: NSManagedObjectContext) -> [T] where T: JSONProcessing, T: JSONManagedObjectType, T: NSObject {
+    func processJSON<T>(items: [JSON], in moc: NSManagedObjectContext) -> [T] where T: JSONProcessing, T: NSObject {
         var arr = [T]()
         let objectIDProperty = Track.Attributes.trackId
         
