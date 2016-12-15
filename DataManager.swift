@@ -59,13 +59,18 @@ final class DataManager {
             }
         }
     }
-    
 }
 
 
+
+protocol JSONProcessing: ManagedObjectType {
+    init?(json: JSON, in context: NSManagedObjectContext)
+    func update(with json: JSON) throws
+}
+
 extension DataManager {
     
-    func processJSON<T:ManagedObject>(items: [JSON], in moc: NSManagedObjectContext) -> [T] where T: ManagedObjectType {
+    func processJSON<T:ManagedObject>(items: [JSON], in moc: NSManagedObjectContext) -> [T] where T: JSONProcessing {
         var arr = [T]()
         let objectIDProperty = Track.Attributes.trackId
         
