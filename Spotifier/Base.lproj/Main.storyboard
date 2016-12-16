@@ -102,7 +102,9 @@
                             <constraint firstItem="c31-69-gLz" firstAttribute="leading" secondItem="bM5-5t-Uxa" secondAttribute="leading" id="zUe-gU-OZO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mY6-LS-72v"/>
+                    <navigationItem key="navigationItem" id="mY6-LS-72v">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="QwE-mJ-edR"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="c31-69-gLz" id="hmd-pi-vRL"/>
                     </connections>
@@ -110,6 +112,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PXS-AT-dYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="309.60000000000002" y="102.99850074962519"/>
+        </scene>
+        <!--Album Controller-->
+        <scene sceneID="Hll-BK-Hre">
+            <objects>
+                <viewController storyboardIdentifier="AlbumController" id="ijc-5U-r7k" customClass="AlbumController" customModule="Spotifier" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="STP-00-gQ3"/>
+                        <viewControllerLayoutGuide type="bottom" id="2vJ-W8-gft"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="exp-hx-8o1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cco-wp-wM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="310" y="779"/>
         </scene>
     </scenes>
 </document>
