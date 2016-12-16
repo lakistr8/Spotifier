@@ -112,3 +112,16 @@ extension ItemController: UICollectionViewDelegateFlowLayout {
     }
     
 }
+
+extension ItemController {
+    
+    @IBAction func didTapAlbumController(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let nc = storyboard.instantiateViewController(withIdentifier: "AlbumController") as? AlbumController else {
+            fatalError("Faild to create a istance of \(storyboard)")
+        }
+        
+        show(nc, sender: self)
+    }
+}

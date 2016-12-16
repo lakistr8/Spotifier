@@ -103,7 +103,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mY6-LS-72v">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="QwE-mJ-edR"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="QwE-mJ-edR">
+                            <connections>
+                                <action selector="didTapAlbumController:" destination="u7P-F8-685" id="cyz-bN-ORX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="c31-69-gLz" id="hmd-pi-vRL"/>
