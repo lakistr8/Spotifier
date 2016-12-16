@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'DAA3A7A2040A0F741F951A0E927101E5'
-               BlueprintName = 'RTCoreDataStack'
+               BlueprintIdentifier = 'C4944FEC314D1A66588651D006273ADE'
+               BlueprintName = 'Kingfisher'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'RTCoreDataStack.framework'>
+               BuildableName = 'Kingfisher.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

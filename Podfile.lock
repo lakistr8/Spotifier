@@ -1,7 +1,9 @@
 PODS:
+  - Kingfisher (3.2.2)
   - RTCoreDataStack (2.0.4)
 
 DEPENDENCIES:
+  - Kingfisher (~> 3.0)
   - RTCoreDataStack (from `https://github.com/radianttap/RTSwiftCoreDataStack.git`)
 
 EXTERNAL SOURCES:
@@ -14,8 +16,9 @@ CHECKOUT OPTIONS:
     :git: https://github.com/radianttap/RTSwiftCoreDataStack.git
 
 SPEC CHECKSUMS:
+  Kingfisher: 821466474ad7ffc375a4aecadfa05068cfed67b3
   RTCoreDataStack: 2cc7165d58b4fcadea361bc62556943a332db689
 
-PODFILE CHECKSUM: 555cd791aad7446cb51dd5ed8991044e4316d07b
+PODFILE CHECKSUM: 93976acf3215d42478fe78c662ca5ec1c0cb4edb
 
 COCOAPODS: 1.1.1
