@@ -16,6 +16,10 @@ class ItemController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //		self.automaticallyAdjustsScrollViewInsets = true
+        
+        let cellNib = UINib(nibName: "ItemCell", bundle: nil)
+        collectionView.register(cellNib, forCellWithReuseIdentifier: "ItemCell")
     }
     
     var moc: NSManagedObjectContext? {
@@ -51,13 +55,13 @@ class ItemController: UIViewController {
         return nsfrc
     }()
     
+    
     override func viewWillTransition(to size: CGSize,
                                      with coordinator: UIViewControllerTransitionCoordinator) {
         
         self.collectionView.collectionViewLayout.invalidateLayout()
         super.viewWillTransition(to: size, with: coordinator)
     }
-    
 }
 
 
@@ -90,10 +94,6 @@ extension ItemController: UICollectionViewDataSource {
 }
 
 
-extension ItemController: NSFetchedResultsControllerDelegate {
-    
-}
-
 
 extension ItemController: UICollectionViewDelegateFlowLayout {
     
@@ -113,15 +113,19 @@ extension ItemController: UICollectionViewDelegateFlowLayout {
     
 }
 
+
+
+extension ItemController: NSFetchedResultsControllerDelegate {
+    
+}
+
+
 extension ItemController {
     
-    @IBAction func didTapAlbumController(_ sender: UIButton) {
-        
+    @IBAction func didTapSearch(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let nc = storyboard.instantiateViewController(withIdentifier: "AlbumController") as? AlbumController else {
-            fatalError("Faild to create a istance of \(storyboard)")
-        }
-        
-        show(nc, sender: self)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SearchController") as! SearchController
+        vc.moc = moc
+        show(vc, sender: self)
     }
 }

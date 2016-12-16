@@ -60,7 +60,7 @@
                     <navigationItem key="navigationItem" id="mY6-LS-72v">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="QwE-mJ-edR">
                             <connections>
-                                <action selector="didTapAlbumController:" destination="u7P-F8-685" id="cyz-bN-ORX"/>
+                                <action selector="didTapSearch:" destination="u7P-F8-685" id="eoL-PE-ISl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -99,7 +99,8 @@
                                 <rect key="frame" x="16" y="28" width="343" height="29"/>
                                 <segments>
                                     <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Album"/>
+                                    <segment title="Track"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>
@@ -114,6 +115,10 @@
                             <constraint firstItem="XAT-nS-aj1" firstAttribute="top" secondItem="bjI-2P-ViR" secondAttribute="bottom" constant="8" id="zaZ-0l-ToM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="XAT-nS-aj1" id="P03-HZ-Fxa"/>
+                        <outlet property="segmentedControl" destination="bjI-2P-ViR" id="6Mm-ba-Mo1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cco-wp-wM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
