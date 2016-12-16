@@ -117,10 +117,10 @@
             </objects>
             <point key="canvasLocation" x="309.60000000000002" y="102.99850074962519"/>
         </scene>
-        <!--View Controller-->
+        <!--Search Controller-->
         <scene sceneID="Hll-BK-Hre">
             <objects>
-                <viewController id="ijc-5U-r7k" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchController" id="ijc-5U-r7k" customClass="SearchController" customModule="Spotifier" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="STP-00-gQ3"/>
                         <viewControllerLayoutGuide type="bottom" id="2vJ-W8-gft"/>
@@ -128,7 +128,45 @@
                     <view key="view" contentMode="scaleToFill" id="exp-hx-8o1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XAT-nS-aj1">
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zht-Tn-r6K">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nfu-fm-q7T">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bjI-2P-ViR">
+                                <rect key="frame" x="16" y="28" width="343" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bjI-2P-ViR" firstAttribute="top" secondItem="STP-00-gQ3" secondAttribute="bottom" constant="8" id="Lxl-WM-PSq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XAT-nS-aj1" secondAttribute="trailing" id="W2y-Mg-ILI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bjI-2P-ViR" secondAttribute="trailing" id="lGo-ZL-QPR"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="XAT-nS-aj1" secondAttribute="bottom" id="pRg-yJ-58z"/>
+                            <constraint firstItem="bjI-2P-ViR" firstAttribute="leading" secondItem="exp-hx-8o1" secondAttribute="leadingMargin" id="qQH-da-Jwu"/>
+                            <constraint firstItem="XAT-nS-aj1" firstAttribute="leading" secondItem="exp-hx-8o1" secondAttribute="leadingMargin" id="w63-cZ-T7O"/>
+                            <constraint firstItem="XAT-nS-aj1" firstAttribute="top" secondItem="bjI-2P-ViR" secondAttribute="bottom" constant="8" id="zaZ-0l-ToM"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cco-wp-wM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
