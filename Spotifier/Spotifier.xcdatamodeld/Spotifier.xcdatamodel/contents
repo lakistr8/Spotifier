@@ -18,7 +18,7 @@
         <attribute name="imageLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="popularity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="spotifyURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="spotifyURI" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="albums" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Album" inverseName="artist" inverseEntity="Album" syncable="YES"/>
         <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="artist" inverseEntity="Track" syncable="YES"/>
     </entity>
@@ -33,12 +33,13 @@
         <attribute name="previewLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="spotifyURI" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="trackId" attributeType="String" syncable="YES"/>
+        <attribute name="trackNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="tracks" inverseEntity="Album" syncable="YES"/>
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="tracks" inverseEntity="Artist" syncable="YES"/>
     </entity>
     <elements>
         <element name="Album" positionX="160" positionY="27" width="128" height="178"/>
         <element name="Artist" positionX="-20" positionY="207" width="128" height="180"/>
-        <element name="Track" positionX="162" positionY="279" width="128" height="225"/>
+        <element name="Track" positionX="162" positionY="279" width="128" height="240"/>
     </elements>
 </model>

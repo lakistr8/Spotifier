@@ -61,9 +61,10 @@ extension Artist {
         }
         
         if let uri = json["uri"] as? String {
-            self.spotifyURL = uri
+            self.spotifyURI = uri
         }
         
         //		self.albums..?
     }
 }
+

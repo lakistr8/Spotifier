@@ -44,8 +44,35 @@ final class DataManager {
             case .track:
                 guard let trackResult = json["tracks"] as? JSON else { return }
                 guard let items = trackResult["items"] as? [JSON] else { return }
+                let albumItems = items.flatMap({ $0["album"] as? JSON })
+                let artistItems = albumItems.flatMap({ $0["artists"] as? [JSON] }).flatMap({ $0 })
                 
-                let tracks = self.processJSONTracks(items, in: moc)
+                let artists: [Artist] = self.processJSONartists(artistItems, in: moc)
+                let albums: [Album] = self.processJSONalbums(albumItems, in: moc)
+                let tracks: [Track] = self.processJSONTracks(items, in: moc)
+                
+                for ti in items {
+                    //	ID for the current track
+                    guard let trackID = ti["id"] as? String else { continue }
+                    //	find Track managed object for current id
+                    guard let track = tracks.filter({ $0.trackId == trackID }).first else { continue }
+                    
+                    //	fetch album ID from the track-item's JSON
+                    guard let ai = ti["album"] as? JSON, let albumID = ai["id"] as? String else { continue }
+                    //	find that album and connect it to the track's relationship
+                    track.album = albums.filter({ $0.albumId == albumID }).first
+                    
+                    //	fetch artist ID from the track-item's JSON
+                    guard let arti = ai["artists"] as? [JSON], let artistID = arti.first?["id"] as? String else { continue }
+                    //	find that artist and connect it to the album's relationship
+                    track.album?.artist = artists.filter({ $0.artistId == artistID }).first
+                }
+                
+                //			case .album:
+                //				guard let trackResult = json["albums"] as? JSON else { return }
+                //				guard let items = trackResult["items"] as? [JSON] else { return }
+                //				let _: [Album] = self.processJSON(items: items, in: moc, idProperty: Album.Attributes.albumId)
+                //				let tracks = self.processJSONTracks(items, in: moc)
                 
             default:
                 break

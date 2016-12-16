@@ -2,22 +2,20 @@
 //  TrackController.swift
 //  Spotifier
 //
-//  Created by iosakademija on 12/10/16.
-//  Copyright © 2016 iosakademija. All rights reserved.
+//  Created by Aleksandar Vacić on 24.11.16..
+//  Copyright © 2016. iOS Akademija. All rights reserved.
 //
 
 import UIKit
 import CoreData
-import RTCoreDataStack
 
 class TrackController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
     }
+    
     
     var moc: NSManagedObjectContext? {
         didSet {
@@ -27,7 +25,7 @@ class TrackController: UITableViewController {
         }
     }
     
-   	lazy var frc: NSFetchedResultsController<Track> = {
+    lazy var frc: NSFetchedResultsController<Track> = {
         let fetchRequest: NSFetchRequest<Track> = Track.fetchRequest()
         
         //		let predicate = NSPredicate(format: "name like 'house'")
@@ -52,10 +50,10 @@ class TrackController: UITableViewController {
         }
         
         return nsfrc
-       }()
-
+    }()
     
 }
+
 
 // MARK: - Table view data source
 extension TrackController {
@@ -90,7 +88,6 @@ extension TrackController {
 }
 
 
-
 extension TrackController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -98,7 +95,6 @@ extension TrackController: NSFetchedResultsControllerDelegate {
     }
     
 }
-
 
 
 

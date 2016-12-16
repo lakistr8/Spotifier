@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 
 @objc(Album)
-public final class Album: ManagedObject {
+public class Album: ManagedObject {
     
     // MARK: - Life cycle methods
     
@@ -16,7 +16,7 @@ public final class Album: ManagedObject {
     }
 }
 
-extension Album: JSONProcessing {
+extension Album {
     
     convenience init?(json: JSON, in context: NSManagedObjectContext) {
         self.init(context: context)
@@ -63,8 +63,5 @@ extension Album: JSONProcessing {
         if let str = json["release_date"] as? String {
             self.dateReleased = DateFormatter.spotifyDayFormatter.date(from: str)
         }
-        
-        //		self.tracks..?
-        //		self.artist..?
     }
 }

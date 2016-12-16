@@ -93,8 +93,8 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="u7P-F8-685" id="s3D-Ua-zmL"/>
-                                    <outlet property="delegate" destination="u7P-F8-685" id="yL7-0C-KYL"/>
+                                    <outlet property="dataSource" destination="u7P-F8-685" id="6HW-NW-9GR"/>
+                                    <outlet property="delegate" destination="u7P-F8-685" id="o6A-Me-E3b"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -107,6 +107,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mY6-LS-72v"/>
+                    <connections>
+                        <outlet property="collectionView" destination="c31-69-gLz" id="hmd-pi-vRL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PXS-AT-dYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -24,12 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guard let coreDataStack = self.coreDataStack else { return }
             
             DataManager.shared.coreDataStack = coreDataStack
-//            DataManager.shared.search(for: "house", type: .track)
-//            
-//            guard let nc = self.window?.rootViewController as? UINavigationController else { return }
-//            guard let trackController = nc.topViewController as? TrackController else { return }
-//            
-//            trackController.moc = coreDataStack.mainContext
+            DataManager.shared.search(for: "house", type: .track)
+            
+            guard let nc = self.window?.rootViewController as? UINavigationController else { return }
+            guard let trackController = nc.topViewController as? ItemController else { return }
+            trackController.moc = coreDataStack.mainContext
         }
         
         

@@ -29,7 +29,7 @@ public extension Artist {
 		static let imageLink = "imageLink"
 		static let name = "name"
 		static let popularity = "popularity"
-		static let spotifyURL = "spotifyURL"
+		static let spotifyURI = "spotifyURI"
 	}
 
 	public struct Relationships {
@@ -51,7 +51,7 @@ public extension Artist {
 
     @NSManaged public var popularity: Int64 // Optional scalars not supported
 
-    @NSManaged public var spotifyURL: String?
+    @NSManaged public var spotifyURI: String?
 
     // MARK: - Relationships
 

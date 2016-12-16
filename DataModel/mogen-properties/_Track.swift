@@ -33,6 +33,7 @@ public extension Track {
 		static let previewLink = "previewLink"
 		static let spotifyURI = "spotifyURI"
 		static let trackId = "trackId"
+		static let trackNumber = "trackNumber"
 	}
 
 	public struct Relationships {
@@ -61,6 +62,8 @@ public extension Track {
     @NSManaged public var spotifyURI: String?
 
     @NSManaged public var trackId: String!
+
+    @NSManaged public var trackNumber: Int16 // Optional scalars not supported
 
     // MARK: - Relationships
 

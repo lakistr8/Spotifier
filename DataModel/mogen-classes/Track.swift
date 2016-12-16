@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 
 @objc(Track)
-public final class Track: ManagedObject {
+public class Track: ManagedObject {
     
     // MARK: - Life cycle methods
     
@@ -16,7 +16,8 @@ public final class Track: ManagedObject {
     }
 }
 
-extension Track: JSONProcessing {
+
+extension Track {
     
     convenience init?(json: JSON, in context: NSManagedObjectContext) {
         self.init(context: context)
@@ -64,7 +65,7 @@ extension Track: JSONProcessing {
         }
         
         if let num = json["track_number"] as? Int16 {
-            self.discNumber = num
+            self.trackNumber = num
         }
         
         if let uri = json["uri"] as? String {
