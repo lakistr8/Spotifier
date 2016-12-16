@@ -51,6 +51,13 @@ class ItemController: UIViewController {
         return nsfrc
     }()
     
+    override func viewWillTransition(to size: CGSize,
+                                     with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        self.collectionView.collectionViewLayout.invalidateLayout()
+        super.viewWillTransition(to: size, with: coordinator)
+    }
+    
 }
 
 
