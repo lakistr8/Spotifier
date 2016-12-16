@@ -57,7 +57,7 @@
 		E87C33371DFFF4ED00D8895A /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObject.swift; path = ../ManagedObject.swift; sourceTree = "<group>"; };
 		E87C33391E0000A400D8895A /* ItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		E87C333B1E0000E500D8895A /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
-		E8D6490E1E02B7E20058A7F9 /* Foundation-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Foundation-Extensions.swift"; path = "DataModel/mogen-properties/Foundation-Extensions.swift"; sourceTree = "<group>"; };
+		E8D6490E1E02B7E20058A7F9 /* Foundation-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Foundation-Extensions.swift"; path = "mogen-properties/Foundation-Extensions.swift"; sourceTree = "<group>"; };
 		E8E3FAC61DFC331A001757E4 /* TrackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackController.swift; sourceTree = "<group>"; };
 		E8E3FAC81DFC332B001757E4 /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		E8E3FACD1DFC4171001757E4 /* Spotify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spotify.swift; path = Spotifier/Spotify.swift; sourceTree = "<group>"; };
@@ -103,9 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				E8E3FAD11DFCC52D001757E4 /* DataModel */,
-				E8D6490E1E02B7E20058A7F9 /* Foundation-Extensions.swift */,
-				E8E3FACD1DFC4171001757E4 /* Spotify.swift */,
+				E8D649191E03D1E90058A7F9 /* Spotify */,
 				E810170F1DFAEEB8002C5EAB /* Spotifier */,
+				E8D649181E03D16D0058A7F9 /* Do Not Touch! */,
 				E810170E1DFAEEB8002C5EAB /* Products */,
 				C7E4EC3ED66E5F9B57956147 /* Pods */,
 				8911989D8D70E5D2F95489FA /* Frameworks */,
@@ -127,13 +127,29 @@
 				E8E3FAC61DFC331A001757E4 /* TrackController.swift */,
 				E8E3FAC81DFC332B001757E4 /* TrackCell.swift */,
 				E81017141DFAEEB8002C5EAB /* Main.storyboard */,
-				E810171A1DFAEEB8002C5EAB /* Assets.xcassets */,
-				E810171C1DFAEEB8002C5EAB /* LaunchScreen.storyboard */,
-				E810171F1DFAEEB8002C5EAB /* Info.plist */,
 				E87C333B1E0000E500D8895A /* ItemCell.swift */,
 				E87C33391E0000A400D8895A /* ItemController.swift */,
 			);
 			path = Spotifier;
+			sourceTree = "<group>";
+		};
+		E8D649181E03D16D0058A7F9 /* Do Not Touch! */ = {
+			isa = PBXGroup;
+			children = (
+				E810171A1DFAEEB8002C5EAB /* Assets.xcassets */,
+				E810171C1DFAEEB8002C5EAB /* LaunchScreen.storyboard */,
+				E810171F1DFAEEB8002C5EAB /* Info.plist */,
+			);
+			name = "Do Not Touch!";
+			path = Spotifier;
+			sourceTree = "<group>";
+		};
+		E8D649191E03D1E90058A7F9 /* Spotify */ = {
+			isa = PBXGroup;
+			children = (
+				E8E3FACD1DFC4171001757E4 /* Spotify.swift */,
+			);
+			name = Spotify;
 			sourceTree = "<group>";
 		};
 		E8E3FAD11DFCC52D001757E4 /* DataModel */ = {
@@ -141,6 +157,7 @@
 			children = (
 				E82580001DFEC97C004BFBBE /* DataManager.swift */,
 				E87C33371DFFF4ED00D8895A /* ManagedObject.swift */,
+				E8D6490E1E02B7E20058A7F9 /* Foundation-Extensions.swift */,
 				E81017171DFAEEB8002C5EAB /* Spotifier.xcdatamodeld */,
 				E8E3FAD21DFCC52D001757E4 /* mogen-classes */,
 				E8E3FAD61DFCC52D001757E4 /* mogen-properties */,
