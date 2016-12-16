@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ItemCell: UICollectionViewCell {
     
@@ -29,14 +30,6 @@ extension ItemCell {
                 return
         }
         
-        URLSession.shared.dataTask(with: url) { [unowned self]
-            data, response, error in
-            if let _ = error { return }
-            guard let data = data else { return }
-            
-            DispatchQueue.main.async {
-                self.photoView.image = UIImage(data: data)
-            }
-            }.resume()
+        self.photoView.kf.setImage(with: url)
     }
 }
