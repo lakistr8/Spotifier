@@ -33,9 +33,13 @@ class ItemController: UIViewController {
         let sort0 = NSSortDescriptor(key: sectionNameKeyPath, ascending: true)
         let sort1 = NSSortDescriptor(key: Track.Attributes.name, ascending: true)
         
+        let predicate = NSPredicate(format: "%K.%K != nil",
+                                    Track.Relationships.album,
+                                    Album.Attributes.imageLink)
+        
         let nsfrc = Track.fetchedResultsController(withContext: moc,
-                                                   sectionNameKeyPath: sectionNameKeyPath,
-                                                   predicate: nil,
+                                                   sectionNameKeyPath: nil,
+                                                   predicate: predicate,
                                                    sortedWith: [sort0, sort1])
         nsfrc.delegate = self
         do {
