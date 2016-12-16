@@ -29,9 +29,9 @@ class GridLayout: UICollectionViewFlowLayout {
         
     }
     
-    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        guard let cv = collectionView else { return false }
-        
-        return cv.bounds.size != newBounds.size
-    }
+//    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+//        guard let cv = collectionView else { return false }
+//        
+//        return cv.bounds.size != newBounds.size
+//    }
 }
