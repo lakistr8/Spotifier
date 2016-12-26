@@ -18,11 +18,12 @@ public final class Album: ManagedObject {
 
 extension Album: JSONProcessing {
     
-    convenience init?(json: JSON, into context: NSManagedObjectContext) {
-        self.init(context: context)
+    static func make(with json: JSON, into context: NSManagedObjectContext) -> Self? {
+        let mo = self.init(context: context)
         
         do {
-            try update(with: json)
+            try mo.update(with: json)
+            return mo
             
         } catch(let error) {
             switch error {
@@ -33,7 +34,8 @@ extension Album: JSONProcessing {
             }
             
             //	if processing fails, then throw it out
-            context.delete(self)
+            context.delete(mo)
+            return nil
         }
     }
     

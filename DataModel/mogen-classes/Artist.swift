@@ -18,11 +18,12 @@ public final class Artist: ManagedObject {
 
 extension Artist: JSONProcessing {
     
-    convenience init?(json: JSON, into context: NSManagedObjectContext) {
-        self.init(context: context)
+    static func make(with json: JSON, into context: NSManagedObjectContext) -> Self? {
+        let mo = self.init(context: context)
         
         do {
-            try update(with: json)
+            try mo.update(with: json)
+            return mo
             
         } catch(let error) {
             switch error {
@@ -33,7 +34,8 @@ extension Artist: JSONProcessing {
             }
             
             //	if processing fails, then throw it out
-            context.delete(self)
+            context.delete(mo)
+            return nil
         }
     }
     
@@ -67,4 +69,5 @@ extension Artist: JSONProcessing {
         //		self.albums..?
     }
 }
+
 
