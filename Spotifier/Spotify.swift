@@ -40,6 +40,32 @@ extension Spotify {
         case album
         case track
         case playlist
+        
+        var integerId: Int {
+            switch self {
+            case .artist:
+                return 0
+            case .album:
+                return 1
+            case .track:
+                return 2
+            default:
+                return 3
+            }
+        }
+        
+        init?(with integer: Int) {
+            switch integer {
+            case 0:
+                self = .artist
+            case 1:
+                self = .album
+            case 2:
+                self = .track
+            default:
+                self = .playlist
+            }
+        }
     }
     
     enum ItemType: String {

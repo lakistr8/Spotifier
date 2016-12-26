@@ -19,6 +19,8 @@ class SearchController: UIViewController {
         
         let cellNib = UINib(nibName: "ItemCell", bundle: nil)
         collectionView.register(cellNib, forCellWithReuseIdentifier: "ItemCell")
+        
+        segmentedControl.selectedSegmentIndex = Spotify.SearchType.artist.integerId
     }
     
     var moc: NSManagedObjectContext? {
@@ -28,17 +30,17 @@ class SearchController: UIViewController {
         }
     }
     
-    lazy var frc: NSFetchedResultsController<Track> = {
+    var searchString: String?
+    var searchType: Spotify.SearchType = .artist
+    
+    var frc: NSFetchedResultsController<Track> = {
         guard let moc = self.moc else { fatalError("NEMA MOC BRE!") }
         
-        let sectionNameKeyPath = "\(Track.Relationships.album).\(Album.Attributes.name)"
-        
-        let sort0 = NSSortDescriptor(key: sectionNameKeyPath, ascending: true)
         let sort1 = NSSortDescriptor(key: Track.Attributes.name, ascending: true)
         
-        let predicate = NSPredicate(format: "%K.%K != nil",
-                                    Track.Relationships.album,
-                                    Album.Attributes.imageLink)
+        let predicate = NSPredicate(format: "%K contains[cd] %@",
+                                    Track.Attributes.name,
+                                    searchString)
         
         let nsfrc = Track.fetchedResultsController(withContext: moc,
                                                    sectionNameKeyPath: nil,
@@ -111,5 +113,16 @@ extension SearchController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         collectionView.reloadData()
+    }
+}
+
+
+extension SearchController {
+    
+    @IBAction func segmentDidChange(_ sender: UISegmentedControl) {
+        
+        let index = sender.selectedSegmentIndex
+        searchType = Spotify.SearchType(with: index)!
+        
     }
 }
