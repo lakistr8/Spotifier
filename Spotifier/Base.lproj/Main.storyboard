@@ -38,9 +38,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dsa" translatesAutoresizingMaskIntoConstraints="NO" id="kLk-Ls-kNF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c31-69-gLz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="Eg9-6s-Ib2" customClass="GridLayout" customModule="Spotifier" customModuleProvider="target"/>
                                 <cells/>
                                 <connections>
@@ -51,9 +54,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kLk-Ls-kNF" firstAttribute="top" secondItem="bM5-5t-Uxa" secondAttribute="topMargin" id="5Nm-cp-QC1"/>
                             <constraint firstItem="a8F-h4-Zk7" firstAttribute="top" secondItem="c31-69-gLz" secondAttribute="bottom" id="ODo-8Z-CCQ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="kLk-Ls-kNF" secondAttribute="bottom" id="UKB-ZI-ONb"/>
                             <constraint firstAttribute="trailing" secondItem="c31-69-gLz" secondAttribute="trailing" id="Ug2-U2-C7m"/>
+                            <constraint firstItem="kLk-Ls-kNF" firstAttribute="leading" secondItem="bM5-5t-Uxa" secondAttribute="leading" id="bj7-jL-gl3"/>
                             <constraint firstItem="c31-69-gLz" firstAttribute="top" secondItem="bM5-5t-Uxa" secondAttribute="topMargin" id="hbC-Vi-3G3"/>
+                            <constraint firstAttribute="trailing" secondItem="kLk-Ls-kNF" secondAttribute="trailing" id="tVM-sb-VIE"/>
                             <constraint firstItem="c31-69-gLz" firstAttribute="leading" secondItem="bM5-5t-Uxa" secondAttribute="leading" id="zUe-gU-OZO"/>
                         </constraints>
                     </view>
@@ -84,9 +91,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sda" translatesAutoresizingMaskIntoConstraints="NO" id="BIW-6b-ugQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XAT-nS-aj1">
                                 <rect key="frame" x="16" y="64" width="343" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="gsn-y9-laQ" customClass="GridLayout" customModule="Spotifier" customModuleProvider="target"/>
                                 <cells/>
                                 <connections>
@@ -108,11 +118,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="BIW-6b-ugQ" secondAttribute="bottom" id="3tY-M5-6Kp"/>
                             <constraint firstItem="bjI-2P-ViR" firstAttribute="top" secondItem="STP-00-gQ3" secondAttribute="bottom" constant="8" id="Lxl-WM-PSq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XAT-nS-aj1" secondAttribute="trailing" id="W2y-Mg-ILI"/>
+                            <constraint firstItem="BIW-6b-ugQ" firstAttribute="leading" secondItem="exp-hx-8o1" secondAttribute="leading" id="ZzP-7U-IEd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bjI-2P-ViR" secondAttribute="trailing" id="lGo-ZL-QPR"/>
                             <constraint firstAttribute="bottomMargin" secondItem="XAT-nS-aj1" secondAttribute="bottom" id="pRg-yJ-58z"/>
+                            <constraint firstItem="BIW-6b-ugQ" firstAttribute="top" secondItem="exp-hx-8o1" secondAttribute="topMargin" id="plb-cl-zd4"/>
                             <constraint firstItem="bjI-2P-ViR" firstAttribute="leading" secondItem="exp-hx-8o1" secondAttribute="leadingMargin" id="qQH-da-Jwu"/>
+                            <constraint firstAttribute="trailing" secondItem="BIW-6b-ugQ" secondAttribute="trailing" id="qb1-cD-jqL"/>
                             <constraint firstItem="XAT-nS-aj1" firstAttribute="leading" secondItem="exp-hx-8o1" secondAttribute="leadingMargin" id="w63-cZ-T7O"/>
                             <constraint firstItem="XAT-nS-aj1" firstAttribute="top" secondItem="bjI-2P-ViR" secondAttribute="bottom" constant="8" id="zaZ-0l-ToM"/>
                         </constraints>
@@ -127,4 +141,8 @@
             <point key="canvasLocation" x="310" y="779"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="dsa" width="84" height="149"/>
+        <image name="sda" width="198" height="325"/>
+    </resources>
 </document>
