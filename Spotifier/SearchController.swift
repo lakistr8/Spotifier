@@ -21,7 +21,11 @@ class SearchController: UIViewController {
         }
     }
     
-    var searchString: String?
+    var searchString: String? {
+        didSet {
+            self.updateDataSource()
+        }
+    }
     var searchType: Spotify.SearchType = .artist
     lazy var frc: NSFetchedResultsController<Track> = {
         guard let moc = self.moc else { fatalError("NEMA MOC BRE!") }
@@ -61,6 +65,12 @@ extension SearchController: UICollectionViewDataSource {
                                     Track.Attributes.name,
                                     searchString)
         frc.fetchRequest.predicate = predicate
+        do {
+            try frc.performFetch()
+            collectionView.reloadData()
+        } catch(let error) {
+            print("Error fetching from Core Data: \(error)")
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -125,3 +135,4 @@ extension SearchController {
         searchType = Spotify.SearchType(with: index)!
     }
 }
+
