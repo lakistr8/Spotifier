@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 
 @objc(Artist)
-public class Artist: ManagedObject {
+public final class Artist: ManagedObject {
     
     // MARK: - Life cycle methods
     
@@ -16,9 +16,9 @@ public class Artist: ManagedObject {
     }
 }
 
-extension Artist {
+extension Artist: JSONProcessing {
     
-    convenience init?(json: JSON, in context: NSManagedObjectContext) {
+    convenience init?(json: JSON, into context: NSManagedObjectContext) {
         self.init(context: context)
         
         do {

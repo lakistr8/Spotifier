@@ -115,7 +115,7 @@ public extension ManagedObjectType {
 
 
 protocol JSONProcessing: ManagedObjectType {
-    init?(json: JSON, in context: NSManagedObjectContext)
+    init?(json: JSON, into context: NSManagedObjectContext)
     func update(with json: JSON) throws
 }
 
@@ -154,7 +154,7 @@ extension JSONProcessing where Self: NSObject {
             //	there should be only one JSON item
             guard let item = filteredItems.first else { continue }
             //	create managed object using that JSON item
-            if let mobject = Self.init(json: item, in: moc) {
+            if let mobject = Self.init(json: item, into: moc) {
                 arr.append(mobject)
             }
         }
