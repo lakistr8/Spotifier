@@ -94,6 +94,10 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ijc-5U-r7k" id="DGb-do-tWB"/>
+                                    <outlet property="delegate" destination="ijc-5U-r7k" id="dN9-ZX-dOl"/>
+                                </connections>
                             </collectionView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bjI-2P-ViR">
                                 <rect key="frame" x="16" y="28" width="343" height="29"/>
