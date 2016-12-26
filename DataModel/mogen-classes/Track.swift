@@ -18,27 +18,6 @@ public final class Track: ManagedObject {
 
 extension Track: JSONProcessing {
     
-    static func make(with json: JSON, into context: NSManagedObjectContext) -> Self? {
-        let mo = self.init(context: context)
-        
-        do {
-            try mo.update(with: json)
-            return mo
-            
-        } catch(let error) {
-            switch error {
-            case is DataImportError:
-                print(error)
-            default:
-                print("some other error")
-            }
-            
-            //	if processing fails, then throw it out
-            context.delete(mo)
-            return nil
-        }
-    }
-    
     func update(with json: JSON) throws {
         guard let trackId = json["id"] as? String else { throw DataImportError.typeMismatch(expected: String.self, actual: type(of: json["id"]), key: "id") }
         guard let name = json["name"] as? String else { throw DataImportError.typeMismatch(expected: String.self, actual: type(of: json["name"]), key: "name") }

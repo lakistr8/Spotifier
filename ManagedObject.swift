@@ -119,7 +119,28 @@ protocol JSONProcessing: ManagedObjectType {
     func update(with json: JSON) throws
 }
 
-extension JSONProcessing where Self: NSObject {
+extension JSONProcessing where Self: ManagedObject {
+    
+    static func make(with json: JSON, into context: NSManagedObjectContext) -> Self? {
+        let mo = self.init(context: context)
+        
+        do {
+            try mo.update(with: json)
+            return mo
+            
+        } catch(let error) {
+            switch error {
+            case is DataImportError:
+                print(error)
+            default:
+                print("some other error")
+            }
+            
+            //	if processing fails, then throw it out
+            context.delete(mo)
+            return nil
+        }
+    }
     
     static func processJSON(items: [JSON], in moc: NSManagedObjectContext, idProperty objectIDProperty: String) -> [Self] {
         var arr = [Self]()
