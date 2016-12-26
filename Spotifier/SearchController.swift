@@ -14,57 +14,63 @@ class SearchController: UIViewController {
     @IBOutlet fileprivate weak var segmentedControl: UISegmentedControl!
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let cellNib = UINib(nibName: "ItemCell", bundle: nil)
-        collectionView.register(cellNib, forCellWithReuseIdentifier: "ItemCell")
-        
-        segmentedControl.selectedSegmentIndex = Spotify.SearchType.artist.integerId
-    }
-    
     var moc: NSManagedObjectContext? {
         didSet {
             if !self.isViewLoaded { return }
-            self.collectionView.reloadData()
+            self.setupDataSource()
         }
     }
     
     var searchString: String?
     var searchType: Spotify.SearchType = .artist
-    
-    var frc: NSFetchedResultsController<Track> = {
-        guard let moc = self.moc else { fatalError("NEMA MOC BRE!") }
+    var frc: NSFetchedResultsController<Track>?
+}
+
+
+extension SearchController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        let sort1 = NSSortDescriptor(key: Track.Attributes.name, ascending: true)
+        let cellNib = UINib(nibName: "ItemCell", bundle: nil)
+        collectionView.register(cellNib, forCellWithReuseIdentifier: "ItemCell")
+        segmentedControl.selectedSegmentIndex = Spotify.SearchType.artist.integerId
         
-        let predicate = NSPredicate(format: "%K contains[cd] %@",
-                                    Track.Attributes.name,
-                                    searchString)
-        
-        let nsfrc = Track.fetchedResultsController(withContext: moc,
-                                                   sectionNameKeyPath: nil,
-                                                   predicate: predicate,
-                                                   sortedWith: [sort0, sort1])
-        nsfrc.delegate = self
-        do {
-            try nsfrc.performFetch()
-        } catch(let error) {
-            print("Error fetching from Core Data: \(error)")
-        }
-        
-        return nsfrc
-    }()
-    
+        setupDataSource()
+    }
 }
 
 
 extension SearchController: UICollectionViewDataSource {
     
+    func setupDataSource() {
+        guard let moc = self.moc else { fatalError("NEMA MOC BRE!") }
+        
+        let sort1 = NSSortDescriptor(key: Track.Attributes.name, ascending: true)
+        
+        var predicate: NSPredicate?
+        if let searchString = searchString {
+            predicate = NSPredicate(format: "%K contains[cd] %@",
+                                    Track.Attributes.name,
+                                    searchString)
+        }
+        let nsfrc = Track.fetchedResultsController(withContext: moc,
+                                                   sectionNameKeyPath: nil,
+                                                   predicate: predicate,
+                                                   sortedWith: [sort1])
+        nsfrc.delegate = self
+        do {
+            try nsfrc.performFetch()
+            collectionView.reloadData()
+        } catch(let error) {
+            print("Error fetching from Core Data: \(error)")
+        }
+        frc = nsfrc
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         guard let _ = moc else { return 0 }
         
-        guard let sections = frc.sections else { return 0 }
+        guard let sections = frc?.sections else { return 0 }
         return sections.count
     }
     
@@ -72,16 +78,16 @@ extension SearchController: UICollectionViewDataSource {
                         numberOfItemsInSection section: Int) -> Int {
         guard let _ = moc else { return 0 }
         
-        guard let sections = frc.sections else { return 0 }
+        guard let sections = frc?.sections else { return 0 }
         return sections[section].numberOfObjects
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let item = frc?.object(at: indexPath) else { fatalError("Item not found in FRC at indexPath: \(indexPath)") }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell",
                                                       for: indexPath) as! ItemCell
-        let item = frc.object(at: indexPath)
         cell.configure(using: item)
         return cell
     }
@@ -120,9 +126,7 @@ extension SearchController: NSFetchedResultsControllerDelegate {
 extension SearchController {
     
     @IBAction func segmentDidChange(_ sender: UISegmentedControl) {
-        
         let index = sender.selectedSegmentIndex
         searchType = Spotify.SearchType(with: index)!
-        
     }
 }
