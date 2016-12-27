@@ -56,6 +56,8 @@ extension SearchController {
         let cellNib = UINib(nibName: "ItemCell", bundle: nil)
         collectionView.register(cellNib, forCellWithReuseIdentifier: "ItemCell")
         segmentedControl.selectedSegmentIndex = Spotify.SearchType.artist.integerId
+        
+        setupSearch()
     }
 }
 
