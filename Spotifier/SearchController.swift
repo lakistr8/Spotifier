@@ -11,6 +11,9 @@ import CoreData
 
 class SearchController: UIViewController {
     
+    var searchController : UISearchController?
+    
+    
     @IBOutlet fileprivate weak var segmentedControl: UISegmentedControl!
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
     
@@ -134,5 +137,13 @@ extension SearchController {
         let index = sender.selectedSegmentIndex
         searchType = Spotify.SearchType(with: index)!
     }
+}
+
+extension SearchController {
+    
+    
+    
+    
+    
 }
 
