@@ -152,7 +152,7 @@ extension SearchController : UISearchResultsUpdating {
             sc.dimsBackgroundDuringPresentation = false
             
             //
-            sc.searchBar.searchBarStyle = UISearchBarStyle.default
+            sc.searchBar.searchBarStyle = UISearchBarStyle.minimal
             self.navigationItem.titleView = sc.searchBar
             sc.searchBar.sizeToFit()
             
