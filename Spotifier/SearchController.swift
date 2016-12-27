@@ -139,11 +139,29 @@ extension SearchController {
     }
 }
 
-extension SearchController {
+extension SearchController : UISearchResultsUpdating {
     
+    func setupSearch() {
+        searchController = {
+            let sc = UISearchController(searchResultsController: nil)
+            sc.searchResultsUpdater = self
+            //
+            sc.hidesNavigationBarDuringPresentation = false
+            sc.dimsBackgroundDuringPresentation = false
+            
+            //
+            sc.searchBar.searchBarStyle = UISearchBarStyle.default
+            self.navigationItem.titleView = sc.searchBar
+            sc.searchBar.sizeToFit()
+            
+            return sc
+        }()
+    }
     
-    
-    
+    func updateSearchResults(for searchController: UISearchController) {
+        self.searchString = searchController.searchBar.text
+        self.collectionView.reloadData()
+    }
     
 }
 
