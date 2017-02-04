@@ -232,6 +232,7 @@
 				TargetAttributes = {
 					E810170C1DFAEEB8002C5EAB = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = QC44D63L54;
 						ProvisioningStyle = Automatic;
 					};
 					E8E3FABB1DFC2A31001757E4 = {
@@ -481,11 +482,14 @@
 			baseConfigurationReference = FAD6F7C919CEE17CAF7D43F4 /* Pods-Spotifier.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QC44D63L54;
 				INFOPLIST_FILE = Spotifier/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rs.iosakademija.Spotifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -494,11 +498,14 @@
 			baseConfigurationReference = DC008718BC699378D1368E07 /* Pods-Spotifier.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QC44D63L54;
 				INFOPLIST_FILE = Spotifier/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rs.iosakademija.Spotifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
